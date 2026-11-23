@@ -1,0 +1,467 @@
+{
+  "version": 1,
+  "profile": {
+    "name": "Tina Wen",
+    "title": "Yiting (Tina)'s Island",
+    "subtitle": "WORK · PROJECTS · TRAVEL · VOLUNTEER",
+    "intro": "Hi, I'm Tina Wen, a student at the University of Michigan School of Information. I build data tools and interfaces, from power-market maps and AI data pipelines to research monitoring tools, and I care about the people who use them. Walk around the island to see my work, my projects, the places I've explored, and the communities I volunteer with.",
+    "links": []
+  },
+  "modules": [
+    {
+      "id": "work",
+      "name": "Work Experience",
+      "short": "Work",
+      "kind": "projects",
+      "english": "WHERE I'VE WORKED",
+      "intro": "Internships, team projects for real clients, and on-campus roles.",
+      "items": [
+        {
+          "title": "Quantitative Developer Intern · Greenwich Commodities LLC",
+          "kicker": "MAY – JUL 2026 · TROY, MI",
+          "summary": "Built data tools for power-market analysis across four projects, from mapping grid pricing nodes to an AI-powered pipeline that tracks U.S. data center development.",
+          "metrics": [
+            {
+              "value": "4",
+              "label": "projects delivered over the internship"
+            }
+          ],
+          "chapters": [
+            {
+              "title": "Mapping NYISO pricing nodes",
+              "text": "Located the coordinates of NYISO pricing nodes so they could be shown on the firm's internal power-market map."
+            },
+            {
+              "title": "Converting SPP coordinates",
+              "text": "Turned abstract x/y values into latitude and longitude with a third-degree polynomial model. I chose it after comparing several regression models, and it was validated against known locations. I also built an automated workflow that matches EIA generators to settlement locations."
+            },
+            {
+              "title": "Load and weather layers (PJM)",
+              "text": "Built interactive map layers for county-level electricity load and six weather variables. The load layer flags unusual load against historical averages and can compare two time periods."
+            },
+            {
+              "title": "AI-powered data center tracker",
+              "text": "Built a pipeline that collects news articles and extracts data center project details with LangExtract and the Gemini API, keeping each result tied to evidence in the source article. Results go through manual review and then feed a historical project table and an interactive dashboard."
+            }
+          ],
+          "sourceNote": "Visuals are omitted to respect company confidentiality.",
+          "tab": "Greenwich Commodities"
+        },
+        {
+          "title": "Project Manager | Data Analyst · American Library Association",
+          "kicker": "FEB – MAR 2026 · CHICAGO, IL · UMSI ALTERNATIVE SPRING BREAK",
+          "summary": "As project manager and data analyst on a UMSI student team, I helped ALA understand why members leave, turning 3,500+ survey records and a website UX review into a former-member survey and retention recommendations.",
+          "metrics": [
+            {
+              "value": "3,500+",
+              "label": "membership survey records analyzed (2022–2025)"
+            },
+            {
+              "value": "19",
+              "label": "questions in the former-member survey"
+            }
+          ],
+          "chapters": [
+            {
+              "title": "The challenge",
+              "text": "ALA wanted to understand why members leave."
+            },
+            {
+              "title": "What we found",
+              "text": "We analyzed 3,500+ membership survey records (2022–2025). Lapsed members showed three patterns: cost sensitivity, low perceived value, and limited awareness of benefits. A UX evaluation of the membership website found gaps in how benefits are shown and how information is organized, which may explain the low awareness."
+            },
+            {
+              "title": "The outcome",
+              "text": "We designed a 19-question survey for former members covering pricing, benefit awareness and website findability. We presented it with targeted retention recommendations to ALA's Marketing and Community Engagement teams."
+            }
+          ],
+          "sourceNote": "Team project through UMSI's Alternative Spring Break. My role: project manager and data analyst.",
+          "tab": "American Library Association",
+          "images": [
+            {
+              "src": "/assets/ala-team.jpg",
+              "alt": "The UMSI Alternative Spring Break team at the American Library Association office in Chicago"
+            },
+            {
+              "src": "/assets/ala-expo.jpg",
+              "alt": "Tina with teammates beside their poster, “ALA Membership Experience: Understanding Non-Renewal and Member Retention,” at the UMSI project exhibition (Expo ’26)"
+            }
+          ]
+        },
+        {
+          "title": "Software Developer Intern · Applied Research LLC",
+          "kicker": "JUN – AUG 2024 · ROCKVILLE, MD",
+          "summary": "Built a web-based data monitoring tool in JavaScript and React for research teams at Jefferson Lab (U.S. Department of Energy).",
+          "metrics": [
+            {
+              "value": "80%",
+              "label": "improvement in fault tolerance"
+            },
+            {
+              "value": "50%",
+              "label": "increase in analytical efficiency"
+            }
+          ],
+          "chapters": [
+            {
+              "title": "Build",
+              "text": "Built 5+ reusable Material-UI components (Button, Text Field, Checkbox, etc.) that are shared across several data visualization modules, which makes the code more modular and easier to maintain."
+            },
+            {
+              "title": "Research with users",
+              "text": "Ran stakeholder interviews and a UX evaluation with researchers to find usability problems and workflow bottlenecks."
+            },
+            {
+              "title": "Impact",
+              "text": "Contributed to an 80% improvement in fault tolerance and a 50% increase in analytical efficiency. I worked with Jefferson Lab supervisors, Old Dominion University faculty and student data analysts."
+            }
+          ],
+          "sourceNote": "The improvement figures are team outcomes I contributed to.",
+          "tab": "Applied Research"
+        },
+        {
+          "title": "UMSI Event Ambassador · School of Information, University of Michigan",
+          "tab": "UMSI Ambassador",
+          "kicker": "SEP 2025 – PRESENT · ANN ARBOR, MI · ON-CAMPUS",
+          "summary": "Represented UMSI to prospective students at recruitment events, and founded a community that helps incoming Chinese students settle in.",
+          "metrics": [
+            {
+              "value": "6+",
+              "label": "recruitment events"
+            },
+            {
+              "value": "10+",
+              "label": "1:1 virtual advising sessions with prospective students"
+            },
+            {
+              "value": "20+",
+              "label": "current students recruited as volunteers"
+            },
+            {
+              "value": "100+",
+              "label": "incoming students supported"
+            }
+          ],
+          "chapters": [
+            {
+              "title": "Representing UMSI",
+              "text": "Represented UMSI at 6+ recruitment events, including UMSI Visit Day, Discover UMSI, BSI Transfer Visit Day and 3+ MSI/MHI student panels, sharing firsthand experience and advising prospective students on academics, career paths and student life. Prospective students can also book 1:1 Zoom sessions with me to dig deeper into the program and my experience; I've held 10+ so far."
+            },
+            {
+              "title": "Speaking for the BDA track",
+              "text": "As the Big Data Analytics (BDA) track's student panel speaker at Visit Day, I gave presentations that helped prospective students understand the curriculum, career outcomes and learning experience."
+            },
+            {
+              "title": "Building a community",
+              "text": "Founded and manage the 2026 UMSI Chinese Student community. I recruited 20+ current students as volunteers, and together we support 100+ incoming students with course registration, academic resources, internship preparation and the move to campus."
+            }
+          ],
+          "images": [
+            {
+              "src": "/assets/umsi-visit-day.jpg",
+              "alt": "Photo-booth strip of UMSI student ambassadors in maize School of Information shirts at MSI/MHI Visit Day, April 10, 2026"
+            }
+          ]
+        },
+        {
+          "title": "Assistant Proctor · Services for Students with Disabilities, Virginia Tech",
+          "tab": "Virginia Tech SSD",
+          "kicker": "APR 2023 – MAY 2025 · BLACKSBURG, VA · ON-CAMPUS",
+          "summary": "Ran exam accommodations for students with disabilities, keeping 50+ tests per semester fair, secure and ADA-compliant.",
+          "metrics": [
+            {
+              "value": "50+",
+              "label": "tests per semester"
+            },
+            {
+              "value": "30%",
+              "label": "team efficiency gain from a new workflow"
+            }
+          ],
+          "chapters": [
+            {
+              "title": "Fair testing conditions",
+              "text": "Managed exam accommodations for students with disabilities, ensuring ADA compliance and equitable testing conditions."
+            },
+            {
+              "title": "The logistics behind every exam",
+              "text": "Coordinated complex schedules and the secure handling of sensitive exam materials using Microsoft Excel, Word and university database systems. I was the link between students and professors, and resolved urgent logistical and student issues during exams."
+            },
+            {
+              "title": "A better workflow",
+              "text": "Led the development and rollout of a new workflow that boosted team efficiency by 30%."
+            }
+          ],
+          "images": [
+            {
+              "src": "/assets/ssd-proctor.jpg",
+              "alt": "Tina at work as an assistant proctor, wearing her maroon uniform polo and SSD lanyard"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "projects",
+      "name": "Projects",
+      "short": "Projects",
+      "kind": "projects",
+      "english": "THINGS I'VE MADE",
+      "intro": "Datathons, published research, client data analysis and UX research.",
+      "items": [
+        {
+          "title": "Michigan Ross Business+Tech Datathon · 3rd Place",
+          "tab": "Ross Datathon",
+          "kicker": "FEB 2026 · ANN ARBOR, MI · TEAM LEADER | DATA ANALYST",
+          "summary": "Led the construction-sector analysis for a team pitch that used 20 years of U.S. state GDP and tax data to recommend where to build a new manufacturing plant, finishing 3rd of 50 teams.",
+          "metrics": [
+            {
+              "value": "3rd",
+              "label": "of 50 teams"
+            },
+            {
+              "value": "2005–2025",
+              "label": "state GDP and tax data analyzed (through Q2 2025)"
+            },
+            {
+              "value": "7",
+              "label": "metrics in my construction ranking"
+            }
+          ],
+          "chapters": [
+            {
+              "title": "The question",
+              "text": "Our cross-functional team analyzed U.S. state GDP and tax data from 2005 to Q2 2025 to answer an investment-style question: which state is the best place to build a new manufacturing plant? Each teammate owned one dimension: sales, construction, workforce, technology or supply chain."
+            },
+            {
+              "title": "My part: construction",
+              "text": "I built the construction-sector ranking. It combines seven min–max normalized metrics in four groups: momentum (year-over-year and quarter-over-quarter growth), structural intensity (construction's share of GDP), scale (total and per-capita construction GDP) and resilience (volatility, and how well each state held up in 2020 compared with 2019)."
+            },
+            {
+              "title": "The finding",
+              "text": "We recommended Ohio not because it led any single dimension, but because it had no major weak spots: on our combined investment index it ranked 2nd in the Great Lakes region and 6th nationally. Turning that into a clear, audience-focused investment story helped us place 3rd of 50 teams."
+            }
+          ],
+          "sourceNote": "Six-person team. I was team leader and owned the construction analysis.",
+          "images": [
+            {
+              "src": "/assets/datathon-presenting.jpg",
+              "alt": "Tina presenting Team 3's analysis on stage at the Michigan Ross Business+Tech Datathon"
+            },
+            {
+              "src": "/assets/datathon-winners.jpg",
+              "alt": "Team 3 with the judges, holding the 3rd-place check at the Michigan Ross Business+Tech Datathon"
+            }
+          ]
+        },
+        {
+          "title": "Ann Arbor Data Dive (A2D2) · 1st Place",
+          "tab": "A2 Data Dive",
+          "kicker": "NOV 2025 · ANN ARBOR, MI · DATA ANALYST | TEAM MEMBER",
+          "summary": "Analyzed Michigan campaign finance records to show how donor behavior changes over time, and presented the findings to the Michigan Department of State, winning 1st place.",
+          "metrics": [
+            {
+              "value": "1st",
+              "label": "place, for analytical depth and visualization"
+            },
+            {
+              "value": "200K+",
+              "label": "campaign finance records cleaned and integrated (2021–2025)"
+            }
+          ],
+          "chapters": [
+            {
+              "title": "Preparing the data",
+              "text": "Cleaned and integrated 200K+ Michigan campaign finance records (2021–2025) with NumPy and Pandas into a structured format for descriptive and comparative analysis."
+            },
+            {
+              "title": "What the data showed",
+              "text": "Visualized donor-size concentration, spikes over time and gaps between candidates with Matplotlib and Seaborn. One striking pattern: in 2025, 67.2% of contributions were under $20, yet the small share of large donations brought in most of the money. The team also flagged 30 “donation dump” days across 9 campaigns, days when a committee received at least 50 donations and 5× its usual daily volume."
+            },
+            {
+              "title": "The outcome",
+              "text": "Presented insights on campaign transparency and financial equity to the Michigan Department of State (MDOS), earning 1st place for analytical depth and visualization."
+            }
+          ],
+          "sourceNote": "Five-person team, Track 1: Descriptive Analysis.",
+          "images": [
+            {
+              "src": "/assets/a2d2-presenting.jpg",
+              "alt": "Our team presenting our findings at the Ann Arbor Data Dive"
+            },
+            {
+              "src": "/assets/a2d2-winners.jpg",
+              "alt": "Our team holding Michigan Department of State shirts with an MDOS judge after winning 1st place"
+            }
+          ]
+        },
+        {
+          "title": "A Nature HCI Approach to Intergenerational Icebreaking · C&C ’25",
+          "tab": "C&C ’25",
+          "kicker": "JAN – APR 2025 · VIRGINIA TECH · SENIOR CAPSTONE · PUBLISHED JUNE 2025",
+          "summary": "Our senior capstone study asked whether swapping short videos recorded in nature could help older and younger adults connect. It was published in the Proceedings of the 2025 ACM Conference on Creativity and Cognition (C&C ’25).",
+          "metrics": [
+            {
+              "value": "C&C ’25",
+              "label": "published in ACM conference proceedings"
+            },
+            {
+              "value": "6",
+              "label": "participants: 2 older adults (65+) and 4 younger adults"
+            },
+            {
+              "value": "2 weeks",
+              "label": "asynchronous video field study"
+            }
+          ],
+          "chapters": [
+            {
+              "title": "The question",
+              "text": "Technology and nature are often treated as separate worlds, and bias between generations runs both ways. We asked whether asynchronous video storytelling in nature could break the ice between older adults (65+) and younger adults, and how tools for this could be designed better."
+            },
+            {
+              "title": "The study",
+              "text": "For two weeks, two groups, each with one older adult and two younger adults, used the Marco Polo video app. On Mondays, Wednesdays and Fridays, members recorded 3–5 minute videos outdoors about what they saw or the memories it stirred; on Tuesdays and Thursdays, they replied to each other. We collected diary reflections, allophilia surveys (positive feelings toward the other age group) and semi-structured interviews, then ran a thematic analysis using the Jones et al. Nature HCI framework."
+            },
+            {
+              "title": "What we found",
+              "text": "Storytelling in nature worked as an icebreaker. Places became triggers for memory (an apple tree brought back one participant's grandmother), and people lost track of clock time while talking about nature. These findings shaped design ideas for future tools: topic prompts to help people start a story, gentle ways to end a conversation instead of “ghosting,” and room for solitude alongside connection."
+            },
+            {
+              "title": "My role",
+              "text": "I took part in the full two-week user study and wrote the first drafts of the Findings & Discussion and Design Implications sections. My teammates and our mentor then discussed and refined them with me. I also helped create our poster and give the presentation."
+            }
+          ],
+          "url": "https://dl.acm.org/doi/10.1145/3698061.3733250",
+          "urlLabel": "Read the paper (ACM Digital Library)",
+          "sourceNote": "Four-person Virginia Tech team. I'm the second of four authors and drafted the findings and design implications."
+        },
+        {
+          "title": "Hidden Figures: Women in High-Performance Computing · CS Genome",
+          "tab": "Hidden Figures",
+          "kicker": "JAN – MAY 2023 · VIRGINIA TECH · RESEARCH MEMBER",
+          "summary": "Researched and visualized the contributions of about 150 women in high-performance computing (HPC) for the CS Genome research group. Our Hidden Figures project won 2nd Place People's Choice at VTURCS.",
+          "metrics": [
+            {
+              "value": "150+",
+              "label": "contributions by women in HPC visualized"
+            },
+            {
+              "value": "2nd",
+              "label": "place, People's Choice Award at VTURCS"
+            }
+          ],
+          "chapters": [
+            {
+              "title": "The mission",
+              "text": "The Hidden Figures group set out to highlight people from underrepresented groups in computing, starting with women in high-performance computing. My main job was the research: identifying about 150 women and gathering as complete a profile of each as I could."
+            },
+            {
+              "title": "Two ways to see their work",
+              "text": "I built two JavaScript visualizations from that data: an interactive timeline (Timeline.js) placing 150+ contributions by each woman's key year, and a map showing each woman's nationality, with directed lines tracing the connections between them."
+            }
+          ],
+          "images": [
+            {
+              "src": "/assets/hidden-figures-poster.jpg",
+              "alt": "Tina with Hidden Figures teammates in front of their research poster at the poster exhibition"
+            },
+            {
+              "src": "/assets/hidden-figures-award.jpg",
+              "alt": "Tina holding the VTURCS 2nd Place People's Choice Award certificate for Hidden Figures"
+            }
+          ],
+          "sourceNote": "Undergraduate research group at Virginia Tech; the award went to the Hidden Figures project team. I also helped the group's client API team with basic testing to catch errors."
+        },
+        {
+          "title": "Breaking the Echo Chamber: Transforming the MHealthy Champion Network",
+          "tab": "MHealthy",
+          "kicker": "SEP – DEC 2025 · ANN ARBOR, MI · UX RESEARCHER | TEAM MEMBER",
+          "summary": "User research for MHealthy, U-M's workplace wellness program, which reaches employees through ~500 volunteer wellness champions. We found the real problem was a one-way feedback loop and proposed an AI workflow that gives champions department-specific reports.",
+          "metrics": [
+            {
+              "value": "6",
+              "label": "stakeholder interviews"
+            },
+            {
+              "value": "3",
+              "label": "solutions compared in a Pugh evaluation"
+            }
+          ],
+          "chapters": [
+            {
+              "title": "Listening",
+              "text": "Conducted semi-structured interviews with MHealthy leadership and a program coordinator as part of 6 stakeholder interviews, and synthesized the data through affinity mapping."
+            },
+            {
+              "title": "What we found",
+              "text": "I wrote the Findings & Insights analysis, citing interview transcripts to surface 3 key insights: limited unit-level data, weak peer connections among champions, and systemic barriers to participation. The most surprising: MHealthy's data team already had participation data, but it never reached the coordinators and champions who needed it."
+            },
+            {
+              "title": "Reframing the problem",
+              "text": "I helped reframe the problem from engaging shift workers to a one-way feedback loop: how might champions better understand the needs of the employees they represent? That led to 3 solutions compared in a Pugh evaluation. The top pick was an AI-powered workflow that turns cleaned participation data into ready-to-share, department-specific reports for champions."
+            }
+          ],
+          "sourceNote": "Five-person team project for SI 500 at UMSI."
+        },
+        {
+          "title": "Halie & Co. Data Analysis · Alternative Fall Break",
+          "tab": "Halie & Co.",
+          "kicker": "OCT 2025 · DETROIT, MI · DATA ANALYST | TEAM MEMBER",
+          "summary": "Cleaned and analyzed inventory data for Halie & Co., a Detroit jewelry business, and turned the findings into purchasing and product recommendations.",
+          "metrics": [
+            {
+              "value": "100%",
+              "label": "schema consistency after cleaning"
+            }
+          ],
+          "chapters": [
+            {
+              "title": "Cleaning the inventory",
+              "text": "Cleaned, standardized and merged the cabochon inventory datasets with NumPy and Pandas, harmonizing units and filling missing values to reach 100% schema consistency."
+            },
+            {
+              "title": "What the stones told us",
+              "text": "Exploratory analysis with Matplotlib and Plotly showed blue as the clear favorite color and oval and round as the leading shapes, so we recommended deeper stock in those shapes and nearby shades like light blue and teal. Across the wider dataset, the team also found that sterling silver earned the highest profit margin (about 72%) despite moderate sales volume."
+            },
+            {
+              "title": "Better data next time",
+              "text": "Proposed data-collection improvements, such as unique SKUs and standardized categories, so future analysis can go deeper."
+            }
+          ],
+          "sourceNote": "Seven-person UMSI team through the Alternative Fall Break program.",
+          "images": [
+            {
+              "src": "/assets/fallbreak-detroit.jpg",
+              "alt": "Alternative Fall Break participants at the Spirit of Detroit statue in downtown Detroit"
+            },
+            {
+              "src": "/assets/fallbreak-farm.jpg",
+              "alt": "Alternative Fall Break participants at the farm where we did community service"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "clubs",
+      "name": "Clubs & Volunteering",
+      "short": "Clubs",
+      "kind": "awards",
+      "english": "TOGETHER WITH OTHERS",
+      "intro": "The communities I've joined and helped build.",
+      "comingSoon": true,
+      "items": []
+    },
+    {
+      "id": "travel",
+      "name": "Travel Explorations",
+      "short": "Travel",
+      "kind": "gallery",
+      "english": "PLACES I'VE WANDERED",
+      "intro": "A map of the places I've explored across the U.S.",
+      "comingSoon": true,
+      "items": []
+    }
+  ]
+}

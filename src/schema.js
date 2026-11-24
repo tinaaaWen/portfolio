@@ -23,7 +23,7 @@ export function normalizePortfolio(data) {
   for (const item of m.items) {
    if (!item.title || !item.summary) throw new Error('Each item needs a title and summary');
    if (item.image && !/^\/assets\/[a-zA-Z0-9_.-]+$/.test(item.image)) throw new Error('Images must be staged under /assets/');
-   if (item.images && (!Array.isArray(item.images) || item.images.some(p=>!p?.src || !/^\/assets\/[a-zA-Z0-9_.-]+$/.test(p.src)))) throw new Error('Each entry in images needs a src staged under /assets/');
+   if (item.images && (!Array.isArray(item.images) || item.images.some(p=>!p?.src || (p.caption!==undefined && typeof p.caption!=='string') || !/^\/assets\/[a-zA-Z0-9_.-]+$/.test(p.src)))) throw new Error('Each entry in images needs a src staged under /assets/');
    if (['research','projects'].includes(m.kind) && !item.chapters?.length) throw new Error('Research and projects need chapters');
   }
   return {...m,...slots[i],number:String(i+1).padStart(2,'0'),english:m.english||'EXPLORE & DISCOVER',intro:m.intro||'',description:m.description||''};

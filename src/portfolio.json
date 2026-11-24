@@ -444,14 +444,96 @@
       ]
     },
     {
-      "id": "clubs",
-      "name": "Clubs & Volunteering",
-      "short": "Clubs",
+      "id": "volunteering",
+      "name": "Volunteering",
+      "short": "Volunteer",
       "kind": "awards",
-      "english": "TOGETHER WITH OTHERS",
-      "intro": "The communities I've joined and helped build.",
-      "comingSoon": true,
-      "items": []
+      "english": "GIVING BACK, GROWING TOGETHER",
+      "intro": "Volunteer roles, community service, and the conferences that shaped my path in computing.",
+      "items": [
+        {
+          "title": "CS Ambassador · Virginia Tech Department of Computer Science",
+          "tab": "VT CS Ambassador",
+          "kicker": "AUG 2023 – MAY 2024 · BLACKSBURG, VA",
+          "result": "Volunteer",
+          "summary": "As a volunteer CS Ambassador, I spoke at presentations and seminars introducing the department to prospective students and their families. I walked them through core courses, career opportunities and study abroad programs to help high school students make informed decisions. I also volunteered at the CS career fair twice, providing student services and helping employers with check-in and booth setup, and joined the volunteer team for the ICPC Mid-Atlantic USA Regional Contest.",
+          "metrics": [
+            {
+              "value": "2",
+              "label": "CS career fairs volunteered"
+            }
+          ],
+          "images": [
+            {
+              "src": "/assets/vt-career-fair.jpg",
+              "alt": "Tina wearing her volunteer badge at the Fall 2023 CS Source Career Fair",
+              "caption": "Selfie on the day of the Fall 2023 CS career fair."
+            },
+            {
+              "src": "/assets/icpc-volunteers.jpg",
+              "alt": "Volunteers in red ICPC shirts setting up balloons in a classroom at the start of the contest",
+              "caption": "The volunteer team for the ICPC USA Regional Contest, busy at the start of the competition."
+            }
+          ]
+        },
+        {
+          "title": "Member · Dream Corps International",
+          "tab": "Dream Corps",
+          "kicker": "AUG 2021 – MAY 2023 · BLACKSBURG, VA",
+          "result": "Community service",
+          "summary": "I joined the charity Dream Corps as a freshman at Virginia Tech and took part in community service projects including the Roanoke Rescue Mission, tree-planting events and a Valentine's Day bazaar. Lending a hand to someone in need gives me a satisfaction that's hard to put into words. I know the community needs me, and I hope the people I help will do the same the next time someone asks.",
+          "images": [
+            {
+              "src": "/assets/dreamcorps-rescue-mission.jpg",
+              "alt": "Dream Corps members in a warehouse at the Roanoke Rescue Mission",
+              "caption": "All members at the Roanoke Rescue Mission."
+            },
+            {
+              "src": "/assets/dreamcorps-tree-planting.jpg",
+              "alt": "Dream Corps members taking a selfie in a field during a tree-planting event",
+              "caption": "All members at a tree-planting event."
+            }
+          ]
+        },
+        {
+          "title": "Attendee · ACM Richard Tapia Celebration of Diversity in Computing",
+          "tab": "Tapia 2024",
+          "kicker": "SEP 2024 · SAN DIEGO, CA",
+          "result": "Conference scholarship",
+          "summary": "I was selected from a competitive pool of scholarship applicants to represent Virginia Tech's underrepresented CS students at Tapia. Over the conference I met students and professionals from across computing, attended research talks and workshops, and heard keynotes about building a career in tech. I also went with a clear goal: to explore master's programs. That is where I first learned about the University of Michigan School of Information (UMSI). It shaped my decision to apply, and I'm now pursuing my master's there.",
+          "images": [
+            {
+              "src": "/assets/tapia-airport.jpg",
+              "alt": "Some Virginia Tech CS attendees taking a group selfie at Roanoke airport before departing for Tapia",
+              "caption": "Some of the VT CS attendees at Roanoke airport, ready to depart."
+            },
+            {
+              "src": "/assets/tapia-booth.jpg",
+              "alt": "Virginia Tech CS attendees making the VT hand sign at the department's Tapia booth",
+              "caption": "All VT CS attendees at our Tapia booth."
+            }
+          ]
+        },
+        {
+          "title": "Attendee · CAPWIC (Capital Region Celebration of Women in Computing)",
+          "tab": "CAPWIC 2024",
+          "kicker": "APR 2024 · CHARLOTTESVILLE, VA",
+          "result": "Conference scholarship",
+          "summary": "I was selected from a competitive pool of scholarship applicants to represent Virginia Tech's women in CS at CAPWIC. I met many outstanding women in computing, listened to research presentations and took part in hands-on workshops. Most importantly, the keynote speeches helped me understand how to explore a career in CS and gave me the confidence to keep moving forward on this path despite its challenges.",
+          "images": [
+            {
+              "src": "/assets/capwic-group.jpg",
+              "alt": "CAPWIC attendees posing in a stairwell beside the CAPWIC banner",
+              "caption": "Group photo of all VT CS attendees in the stairwell."
+            },
+            {
+              "src": "/assets/capwic-rotunda.jpg",
+              "alt": "Tina striking a playful pose on the lawn in front of the Rotunda at the University of Virginia",
+              "caption": "In front of the Rotunda at UVA, where the conference took place."
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "travel",

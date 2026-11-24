@@ -891,3 +891,8 @@ body[data-theme="ocean"] .work-panel .panel-scene {
 /* Several photos for one entry */
 .photo-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: .75rem; margin-top: 1rem; }
 .photo-row .evidence { margin: 0; }
+
+/* Visible photo captions */
+.photo-fig { margin: 0; display: flex; flex-direction: column; gap: .4rem; }
+.photo-fig .evidence { margin: 0; }
+.photo-fig figcaption { font-size: .82rem; line-height: 1.45; color: var(--muted, #5f6b62); }

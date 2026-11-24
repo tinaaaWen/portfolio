@@ -6,11 +6,11 @@ const asset = (src='') => src.startsWith('/assets/') ? BASE + src.slice(1) : src
 let current;
 const links = (items=[]) => items.filter(l=>safeUrl(l.url)).map(l=>`<a class="action-link" href="${h(safeUrl(l.url))}" target="_blank" rel="noopener noreferrer">${h(l.label||'Open link')} ↗</a>`).join('');
 const metrics = (items=[]) => items.length ? `<div class="ex-metrics">${items.map(m=>`<div><strong>${h(m.value)}</strong><span>${h(m.label)}</span></div>`).join('')}</div>` : '';
-const pictureOne = (src,alt,cls) => `<button class="evidence ${cls}" data-photo="${h(asset(src))}" data-caption="${h(alt)}" aria-label="Enlarge: ${h(alt)}"><img src="${h(asset(src))}" alt="${h(alt)}" loading="lazy"/><span class="zoom-hint">View full size ↗</span></button>`;
+const pictureOne = (src,alt,cls,cap) => cap ? `<figure class="photo-fig">${pictureOne(src,alt,cls)}<figcaption>${h(cap)}</figcaption></figure>` : `<button class="evidence ${cls}" data-photo="${h(asset(src))}" data-caption="${h(alt)}" aria-label="Enlarge: ${h(alt)}"><img src="${h(asset(src))}" alt="${h(alt)}" loading="lazy"/><span class="zoom-hint">View full size ↗</span></button>`;
 const picture = (item,cls='') => {
  const list = item.images?.length ? item.images : (item.image ? [{src:item.image,alt:item.alt}] : []);
  if(!list.length) return '';
- const html = list.map(p=>pictureOne(p.src,p.alt||item.title,cls)).join('');
+ const html = list.map(p=>pictureOne(p.src,p.alt||item.title,cls,p.caption)).join('');
  return list.length>1 ? `<div class="photo-row">${html}</div>` : html;
 };
 const fold = (title,text) => text ? `<details class="field-fold"><summary>${h(title)} <span>＋</span></summary><p>${h(text)}</p></details>` : '';
@@ -33,7 +33,7 @@ export function mountExhibit(host,id) {
   view=choices(module.items.map((v,i)=>`${String(i+1).padStart(2,'0')} · ${h(v.title)}`),'item',s.item)+
   `<article class="screening story-enter ${item.image?'':'text-only'}">${picture(item,'poster')}<div class="screening-copy"><span class="tiny-label">${h(item.kicker)}</span><h3>${h(item.title)}</h3><p>${h(item.summary)}</p>${metrics(item.metrics)}${links(item.url?[{url:item.url,label:'View work'}]:[])}</div></article>`;
  } else if(module.kind==='awards') {
-  view=choices(module.items.map((v,i)=>`<span class="medal">${h(v.rank||String(i+1).padStart(2,'0'))}</span><span>${h(v.title)}</span>`),'item',s.item,'medal-shelf')+
+  view=choices(module.items.map((v,i)=>`<span class="medal">${h(v.rank||String(i+1).padStart(2,'0'))}</span><span>${h(v.tab||v.title)}</span>`),'item',s.item,'medal-shelf')+
   `<article class="award-card story-enter"><div class="award-heading"><div><span class="tiny-label">${h(item.kicker)}</span><h3>${h(item.title)}</h3></div>${item.result?`<strong>${h(item.result)}</strong>`:''}</div>${picture(item,'award-photo')}<p class="photo-caption">${h(item.summary)}</p>${metrics(item.metrics)}${links(item.url?[{url:item.url,label:'View details'}]:[])}</article>`;
  } else {
   view=module.timeline?.length?`<details class="career-fold"><summary>View timeline ＋</summary><div class="career-timeline">${module.timeline.map(t=>`<article><small>${h(t.period)}</small><h4>${h(t.title)}</h4><p>${h(t.text)}</p></article>`).join('')}</div></details>`:'';

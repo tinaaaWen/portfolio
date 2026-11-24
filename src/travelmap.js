@@ -12,8 +12,10 @@ const S = W / (2 * ne1(180, 0)[0]), TOP = ne1(0, 84)[1], H = (TOP - ne1(0, -57)[
 export const project = (lng, lat) => { const [x, y] = ne1(lng, lat); return [W / 2 + x * S, (TOP - y) * S]; };
 
 const WORLD = 'World';
+// Regions with a fixed frame and province/state outlines + names.
+const REGIONS = { China: { iso: 'CHN', b: [73.5, 18, 134.8, 53.6] }, 'United States': { iso: 'USA', b: [-124.8, 24.5, -66.9, 49.4] } };
 const PIN = 'M0 0C-1.6-4.6-6.4-7.8-6.4-12.6A6.4 6.4 0 1 1 6.4-12.6C6.4-7.8 1.6-4.6 0 0Z';
-let landPromise = null, active = null;
+let landPromise = null, adminPromise = null, active = null;
 
 function graticule() {
  let d = '';
@@ -24,17 +26,20 @@ function graticule() {
 function regionsOf(module) { return [WORLD, ...new Set(module.items.map(i => i.region).filter(Boolean))]; }
 function viewFor(module, region) {
  if (region === WORLD) return [0, H / 2 - W / ASPECT / 2, W, W / ASPECT];
- const pts = module.items.filter(i => i.region === region).map(i => project(i.lng, i.lat));
+ const box = REGIONS[region]?.b;
+ const pts = box ? [0, .25, .5, .75, 1].flatMap(t => [project(box[0] + (box[2] - box[0]) * t, box[1]), project(box[0] + (box[2] - box[0]) * t, box[3]), project(box[0], box[1] + (box[3] - box[1]) * t), project(box[2], box[1] + (box[3] - box[1]) * t)])
+  : module.items.filter(i => i.region === region).map(i => project(i.lng, i.lat));
+ if (box) { const xs = pts.map(p => p[0]), ys = pts.map(p => p[1]); let [x0, x1, y0, y1] = [Math.min(...xs), Math.max(...xs), Math.min(...ys), Math.max(...ys)]; let w = (x1 - x0) * 1.04, hgt = (y1 - y0) * 1.04; const a = Math.min(ASPECT, Math.max(1.35, w / hgt)); if (w / hgt < a) w = hgt * a; else hgt = w / a; return [(x0 + x1) / 2 - w / 2, (y0 + y1) / 2 - hgt / 2, w, hgt]; }
  const xs = pts.map(p => p[0]), ys = pts.map(p => p[1]);
  let [x0, x1, y0, y1] = [Math.min(...xs), Math.max(...xs), Math.min(...ys), Math.max(...ys)];
  let w = Math.max(x1 - x0, 40) * 1.3, hgt = Math.max(y1 - y0, 20) * 1.3 + 14;
  if (w / hgt < ASPECT) w = hgt * ASPECT; else hgt = w / ASPECT;
  return [(x0 + x1) / 2 - w / 2, (y0 + y1) / 2 - hgt / 2 - 4, w, hgt];
 }
-const placeLine = (item, h) => [item.date, item.kicker].filter(Boolean).map(h).join(' · ');
-
 function card(item, h, picture) {
- return `<article class="award-card place-card story-enter"><div class="award-heading"><div><span class="tiny-label">${placeLine(item, h)}</span><h3>${h(item.title)}</h3></div></div>${picture(item, 'award-photo')}<p class="photo-caption">${h(item.summary)}</p></article>`;
+ const spots = item.spots?.length ? item.spots : [item];
+ const many = spots.length > 1;
+ return `<article class="award-card place-card story-enter"><div class="award-heading"><div><span class="tiny-label">${h(item.kicker || '')}</span><h3>${h(item.title)}</h3></div>${many ? `<strong>${spots.length} stops</strong>` : ''}</div>${spots.map(sp => `<section class="spot"><span class="tiny-label">${h(sp.date || item.date || '')}</span>${sp === item ? '' : `<h4>${h(sp.title)}</h4>`}${picture(sp, 'award-photo')}<p class="photo-caption">${h(sp.summary || '')}</p></section>`).join('')}</article>`;
 }
 
 export function renderTravel(module, s, h, picture) {
@@ -46,10 +51,11 @@ export function renderTravel(module, s, h, picture) {
   return `<g class="map-pin" data-place="${i}" data-x="${x.toFixed(2)}" data-y="${y.toFixed(2)}" tabindex="0" role="button" aria-label="${h(item.title)}${item.date ? ', ' + h(item.date) : ''}" aria-pressed="${i === s.item}"><g class="pin-body"><circle class="pin-pulse" r="7" cy="0"/><path d="${PIN}"/><circle cy="-12.6" r="2.5" class="pin-dot"/></g></g>`;
  }).join('');
  return `<div class="choice-strip map-regions" aria-label="Choose a map view">${regions.map(r => `<button data-region="${h(r)}" aria-pressed="${r === s.region}">${h(r)}</button>`).join('')}</div>
-<div class="travel-map" data-map>
+<div class="travel-map" data-map style="aspect-ratio:${vb[2].toFixed(2)}/${vb[3].toFixed(2)}">
  <svg viewBox="${vb.map(n => n.toFixed(2)).join(' ')}" preserveAspectRatio="xMidYMid slice" aria-label="Map of places I've visited. Use the list below the map to choose a place.">
   <path class="map-grid" d="${graticule()}"/>
   <path class="map-land" d=""/>
+  ${regions.filter(r => REGIONS[r]).map(r => `<g class="map-admin${r === s.region ? ' on' : ''}" data-admin="${h(r)}"><path d=""/><g class="map-labels"></g></g>`).join('')}
   <g class="map-pins">${pins}</g>
  </svg>
  <div class="map-tip" role="status" hidden></div>
@@ -60,9 +66,20 @@ export function renderTravel(module, s, h, picture) {
 }
 
 function sizePins(root) {
- const svg = root.querySelector('svg'), vb = svg.viewBox.baseVal, px = svg.getBoundingClientRect().width || 520;
- const k = Math.max(vb.width / px, vb.height / (px / ASPECT)) * 1.0;
+ const svg = root.querySelector('svg'), vb = svg.viewBox.baseVal, r = svg.getBoundingClientRect();
+ const k = r.width ? Math.min(vb.width / r.width, vb.height / r.height) : vb.width / 520;
+ root.querySelectorAll('.map-labels text').forEach(t => t.setAttribute('font-size', (8.5 * k).toFixed(3)));
  root.querySelectorAll('.map-pin').forEach(p => p.setAttribute('transform', `translate(${p.dataset.x} ${p.dataset.y}) scale(${k.toFixed(4)})`));
+ // Hide province/state names that would collide with a pin or a bigger region's name.
+ const boxes = [...root.querySelectorAll('.map-pin')].map(p => { const x = +p.dataset.x, y = +p.dataset.y; return [x - 8 * k, y - 21 * k, x + 8 * k, y + 2 * k]; });
+ const fs = 8.5 * k;
+ root.querySelectorAll('.map-admin.on .map-labels text').forEach(t => {
+  const x = +t.getAttribute('x'), y = +t.getAttribute('y'), hw = t.textContent.length * fs * .3 + 2 * k, hh = fs * .6;
+  const b = [x - hw, y - hh, x + hw, y + hh];
+  const hit = boxes.some(o => b[0] < o[2] && b[2] > o[0] && b[1] < o[3] && b[3] > o[1]);
+  t.style.visibility = hit ? 'hidden' : '';
+  if (!hit) boxes.push(b);
+ });
 }
 function animateTo(root, target) {
  const svg = root.querySelector('svg'), vb = svg.viewBox.baseVal, from = [vb.x, vb.y, vb.width, vb.height];
@@ -96,6 +113,18 @@ export function wireTravel(host, module, s, h, picture) {
  landPromise ||= fetch(((import.meta.env && import.meta.env.BASE_URL) || '/') + 'assets/world-land.json').then(r => { if (!r.ok) throw new Error(r.status); return r.json(); });
  landPromise.then(d => { if (root.isConnected) root.querySelector('.map-land').setAttribute('d', d.d); })
   .catch(() => { landPromise = null; if (root.isConnected) root.querySelector('.map-note').hidden = false; });
+ if (root.querySelector('[data-admin]')) {
+  adminPromise ||= fetch(((import.meta.env && import.meta.env.BASE_URL) || '/') + 'assets/world-admin1.json').then(r => { if (!r.ok) throw new Error(r.status); return r.json(); });
+  adminPromise.then(d => {
+   if (!root.isConnected) return;
+   root.querySelectorAll('[data-admin]').forEach(g => {
+    const a = d[REGIONS[g.dataset.admin].iso]; if (!a) return;
+    g.querySelector('path').setAttribute('d', a.d);
+    g.querySelector('.map-labels').innerHTML = a.labels.map(([n, x, y]) => `<text x="${x}" y="${y}">${h(n)}</text>`).join('');
+   });
+   sizePins(root);
+  }).catch(() => { adminPromise = null; });
+ }
 }
 
 function selectPlace(i, fromPin) {
@@ -115,7 +144,10 @@ function setRegion(region) {
  s.region = region;
  host.querySelectorAll('[data-region]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.region === region)));
  hideTip(root);
- animateTo(root, viewFor(module, region));
+ root.querySelectorAll('[data-admin]').forEach(g => g.classList.toggle('on', g.dataset.admin === region));
+ const vb = viewFor(module, region);
+ root.style.aspectRatio = `${vb[2].toFixed(2)}/${vb[3].toFixed(2)}`;
+ animateTo(root, vb);
 }
 
 document.addEventListener('click', e => {

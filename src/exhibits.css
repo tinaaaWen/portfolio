@@ -899,7 +899,7 @@ body[data-theme="ocean"] .work-panel .panel-scene {
 
 /* Travel map */
 .map-regions{margin-bottom:10px}
-.travel-map{position:relative;aspect-ratio:2/1;border-radius:16px;overflow:hidden;border:1px solid var(--line);margin:4px 0 12px;
+.travel-map{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line);margin:4px 0 12px;
  background-color:color-mix(in srgb,var(--paper) 70%,var(--glow));
  background-image:repeating-radial-gradient(ellipse at 30% 120%,transparent 0 13px,color-mix(in srgb,var(--stamp) 9%,transparent) 14px 15px,transparent 16px 26px);
  box-shadow:inset 0 0 40px color-mix(in srgb,var(--paper) 55%,transparent)}
@@ -930,3 +930,9 @@ body[data-theme="ocean"] .work-panel .panel-scene {
 .map-stops button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .map-stops button[aria-pressed="true"] b{background:var(--paper);color:var(--ink)}
 .place-card .award-heading{margin-bottom:10px}
+.map-admin{opacity:0;transition:opacity .5s;pointer-events:none}
+.map-admin.on{opacity:1}
+.map-admin path{fill:none;stroke:color-mix(in srgb,var(--stamp) 60%,var(--paper));stroke-width:.8;stroke-dasharray:3 2;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.map-labels text{fill:color-mix(in srgb,var(--ink) 72%,var(--paper));text-anchor:middle;dominant-baseline:middle;font-weight:600;letter-spacing:.02em;paint-order:stroke;stroke:color-mix(in srgb,var(--paper-deep) 70%,var(--stamp));stroke-width:2.2px;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.place-card .spot+.spot{margin-top:22px;padding-top:18px;border-top:1px dashed var(--line)}
+.place-card .spot h4{margin:4px 0 10px;font-size:17px;color:var(--ink)}

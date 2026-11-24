@@ -47,3 +47,12 @@ test('Map places need valid coordinates',()=>{
  m.items[0].lng=116;
  assert.doesNotThrow(()=>normalizePortfolio(d));
 });
+
+test('Map stops need a title, summary and staged photos',()=>{
+ const d=structuredClone(data);
+ const m=d.modules.find(x=>x.kind==='map');
+ m.items[0].spots=[{title:'Somewhere',summary:'ok',images:[{src:'https://evil.example/x.jpg'}]}];
+ assert.throws(()=>normalizePortfolio(d));
+ m.items[0].spots=[{title:'Somewhere',summary:'ok',images:[{src:'/assets/fine.jpg'}]}];
+ assert.doesNotThrow(()=>normalizePortfolio(d));
+});

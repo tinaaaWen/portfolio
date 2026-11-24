@@ -35,3 +35,18 @@ test('Coming-soon sections render a placeholder instead of an empty state',async
   }
  } finally {delete globalThis.document;}
 });
+
+test('Map sections render a pin and a stop for every place, with the first place card open',async()=>{
+ globalThis.document={addEventListener(){},getElementById(){return {addEventListener(){}};}};
+ try {
+  const {categories}=await import('../src/content.js');
+  const {mountExhibit}=await import('../src/exhibits.js');
+  const host={innerHTML:''};
+  for(const module of categories.filter(m=>m.kind==='map')){
+   mountExhibit(host,module.id);
+   assert.equal((host.innerHTML.match(/class="map-pin"/g)||[]).length,module.items.length);
+   assert.equal((host.innerHTML.match(/<button data-place=/g)||[]).length,module.items.length);
+   assert.ok(host.innerHTML.includes('place-card'));
+  }
+ } finally {delete globalThis.document;}
+});

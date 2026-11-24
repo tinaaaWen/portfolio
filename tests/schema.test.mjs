@@ -35,3 +35,15 @@ test('Photo lists must point at staged assets',()=>{
  d.modules[0].items[0].images=[{src:'/assets/ok-photo.jpg',alt:'fine'}];
  assert.doesNotThrow(()=>normalizePortfolio(d));
 });
+
+test('Map places need valid coordinates',()=>{
+ const d=structuredClone(data);
+ const m=d.modules.find(x=>x.kind==='map');
+ assert.ok(m);
+ m.items[0].lat='north';
+ assert.throws(()=>normalizePortfolio(d));
+ m.items[0].lat=40;m.items[0].lng=200;
+ assert.throws(()=>normalizePortfolio(d));
+ m.items[0].lng=116;
+ assert.doesNotThrow(()=>normalizePortfolio(d));
+});

@@ -1,5 +1,6 @@
 import { categories, profile } from './content.js';
 import { escapeHTML as h, safeUrl } from './schema.js';
+import { renderTravel, wireTravel } from './travelmap.js';
 const states = new Map();
 const BASE = (import.meta.env && import.meta.env.BASE_URL) || '/';
 const asset = (src='') => src.startsWith('/assets/') ? BASE + src.slice(1) : src;
@@ -26,6 +27,7 @@ export function mountExhibit(host,id) {
   return;
  }
  if(!states.has(id)) states.set(id,{item:0,chapter:0});
+ if(module.kind==='map'){const s=states.get(id);host.innerHTML=`${metrics(module.metrics)}`+renderTravel(module,s,h,picture);wireTravel(host,module,s,h,picture);return;}
  const s=states.get(id), item=module.items[s.item], chapters=item.chapters||[];
  let view='';
  const intro=`${metrics(module.metrics)}<div class="account-links">${links(module.links)}</div>`;

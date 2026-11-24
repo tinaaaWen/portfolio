@@ -547,11 +547,123 @@
       "id": "travel",
       "name": "Travel Explorations",
       "short": "Travel",
-      "kind": "gallery",
+      "kind": "map",
       "english": "PLACES I'VE WANDERED",
-      "intro": "A map of the places I've explored across the U.S.",
-      "comingSoon": true,
-      "items": []
+      "intro": "The places I've explored so far, from the Great Wall to the Stone Forest. Hover over a pin to see where and when, and click it to read the story.",
+      "items": [
+        {
+          "title": "White Horse Temple",
+          "tab": "White Horse Temple",
+          "kicker": "Luoyang, Henan, China",
+          "date": "",
+          "region": "China",
+          "lat": 34.72,
+          "lng": 112.6,
+          "summary": "A visit to the White Horse Temple in Luoyang, traditionally regarded as the first Buddhist temple in China.",
+          "images": [
+            {
+              "src": "/assets/travel-luoyang.jpg",
+              "alt": "Young Tina striking a dance pose on a wide stone avenue in front of a traditional gate"
+            }
+          ]
+        },
+        {
+          "title": "The Great Wall",
+          "tab": "Great Wall",
+          "kicker": "Beijing, China",
+          "date": "Age 6",
+          "region": "China",
+          "lat": 40.36,
+          "lng": 116.02,
+          "summary": "At six, I refused to be carried. I climbed all the way up Haohan Po, the Great Wall's famously steep “Hero's Slope,” on my own two feet. My parents still bring it up to this day.",
+          "images": [
+            {
+              "src": "/assets/travel-great-wall.jpg",
+              "alt": "Six-year-old Tina standing on the Great Wall with the wall winding over the mountains behind her"
+            }
+          ]
+        },
+        {
+          "title": "Millennium City Park",
+          "tab": "Kaifeng",
+          "kicker": "Kaifeng, Henan, China",
+          "date": "",
+          "region": "China",
+          "lat": 34.81,
+          "lng": 114.33,
+          "summary": "A park that brings to life the Song dynasty capital painted in the famous scroll Along the River During the Qingming Festival. At night we watched Dongjing Menghua (“Dreams of the Eastern Capital”), a stunning show told through classical poetry. Through those poems, I watched the Song dynasty rise and fall.",
+          "images": [
+            {
+              "src": "/assets/travel-kaifeng.jpg",
+              "alt": "Tina and her mother in front of the carved stone at the entrance of Millennium City Park"
+            }
+          ]
+        },
+        {
+          "title": "Huangshan",
+          "tab": "Huangshan",
+          "kicker": "Anhui, China",
+          "date": "",
+          "region": "China",
+          "lat": 30.13,
+          "lng": 118.17,
+          "summary": "My whole family climbed Huangshan, the Yellow Mountains. The climb was exhausting, but seeing the famous Huangshan pines I had read about in my Chinese textbook was a real thrill.",
+          "images": [
+            {
+              "src": "/assets/travel-huangshan.jpg",
+              "alt": "Tina and her parents resting on a granite peak of Huangshan surrounded by mist"
+            }
+          ]
+        },
+        {
+          "title": "Bashang Grassland",
+          "tab": "Bashang",
+          "kicker": "Fengning, Hebei, China",
+          "date": "",
+          "region": "China",
+          "lat": 41.75,
+          "lng": 116.45,
+          "summary": "Grassland stretching as far as the eye could see. It brought to mind the ancient folk poem Song of the Chile: “The sky is like a great yurt, covering the plains on every side.”",
+          "images": [
+            {
+              "src": "/assets/travel-bashang.jpg",
+              "alt": "Tina on rolling green grassland under a wide blue sky"
+            }
+          ]
+        },
+        {
+          "title": "Harbin Ice and Snow World",
+          "tab": "Harbin",
+          "kicker": "Harbin, Heilongjiang, China",
+          "date": "6th-grade winter break",
+          "region": "China",
+          "lat": 45.78,
+          "lng": 126.57,
+          "summary": "During winter break in sixth grade, my family went to Harbin. It was my first time seeing crystal-clear ice built into grand palaces, and snow carved into sculptures so lifelike they seemed ready to move.",
+          "images": [
+            {
+              "src": "/assets/travel-harbin.jpg",
+              "alt": "Tina and her parents bundled up at night in front of glowing ice palaces and snow sculptures"
+            }
+          ]
+        },
+        {
+          "title": "Stone Forest",
+          "tab": "Stone Forest",
+          "kicker": "Shilin, Yunnan, China",
+          "date": "",
+          "region": "China",
+          "lat": 24.82,
+          "lng": 103.32,
+          "summary": "My parents and I explored the Stone Forest, a maze of towering limestone pillars. For this photo I dressed up as Ashima, the heroine of a local Yi legend.",
+          "images": [
+            {
+              "src": "/assets/travel-stone-forest.jpg",
+              "alt": "Young Tina in a traditional Ashima costume holding a basket of flowers beside a pond in the Stone Forest"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

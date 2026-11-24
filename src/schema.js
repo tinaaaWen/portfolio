@@ -1,4 +1,4 @@
-const kinds = new Set(['gallery','awards','research','projects']);
+const kinds = new Set(['gallery','awards','research','projects','map']);
 const slots = [
  {position:[-6.7,3.4],arrival:[-5.4,4.9],color:'#e99364'},
  {position:[6.6,3],arrival:[5,4.6],color:'#a38bbf'},
@@ -24,6 +24,7 @@ export function normalizePortfolio(data) {
    if (!item.title || !item.summary) throw new Error('Each item needs a title and summary');
    if (item.image && !/^\/assets\/[a-zA-Z0-9_.-]+$/.test(item.image)) throw new Error('Images must be staged under /assets/');
    if (item.images && (!Array.isArray(item.images) || item.images.some(p=>!p?.src || (p.caption!==undefined && typeof p.caption!=='string') || !/^\/assets\/[a-zA-Z0-9_.-]+$/.test(p.src)))) throw new Error('Each entry in images needs a src staged under /assets/');
+   if (m.kind==='map' && !(Number.isFinite(item.lat) && Number.isFinite(item.lng) && Math.abs(item.lat)<=90 && Math.abs(item.lng)<=180)) throw new Error('Each map place needs numeric lat and lng');
    if (['research','projects'].includes(m.kind) && !item.chapters?.length) throw new Error('Research and projects need chapters');
   }
   return {...m,...slots[i],number:String(i+1).padStart(2,'0'),english:m.english||'EXPLORE & DISCOVER',intro:m.intro||'',description:m.description||''};

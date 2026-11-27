@@ -294,6 +294,24 @@ export function coral(g, x, y, z, s = 1, color = "#d79bc2") {
   }
   return t;
 }
+// School colors (Virginia Tech, Michigan), softened slightly to sit with the island palette.
+export const SCHOOL = { vt: ["#8a3650", "#e08a4f"], um: ["#34507a", "#efc757"] };
+const PENNANT = (() => { const sh = new T.Shape(); sh.moveTo(-0.5, 0); sh.lineTo(0.5, 0); sh.lineTo(0, -1); sh.closePath(); return new T.ShapeGeometry(sh); })();
+// A string of small triangular flags hanging along a line from a to b, alternating school colors.
+export function bunting(g, a, b, n = 5, size = 0.17) {
+  const cols = [SCHOOL.vt[0], SCHOOL.um[1], SCHOOL.vt[1], SCHOOL.um[0]];
+  const yaw = -Math.atan2(b[2] - a[2], b[0] - a[0]);
+  for (let i = 0; i < n; i++) {
+    const t = (i + 0.5) / n;
+    const f = mesh(g, PENNANT, mat(cols[i % cols.length], { side: T.DoubleSide }), [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t], [size, size * 1.2, 1]);
+    f.rotation.y = yaw;
+  }
+}
+// A two-stripe flag on a pole, flying toward -x.
+function schoolFlag(g, [top, bottom], x, y, w = 0.5, h = 0.28) {
+  block(g, top, [x - w / 2, y + h / 4, 0], [w, h / 2, 0.02]);
+  block(g, bottom, [x - w / 2, y - h / 4, 0], [w, h / 2, 0.02]);
+}
 export function tent(g) {
   const geo = new T.ConeGeometry(1.5, 1.7, 4, 1, false);
   geo.rotateY(Math.PI / 4);
@@ -308,19 +326,20 @@ export function tent(g) {
   rod(g, "#f5dfb8", [1.18, 0, 1.12], [0, 1.78, 0.15], 0.04);
   for (let s of [-1, 1]) {
     rod(g, "#e8d7b7", [s * 0.9, 0.7, 0.5], [s * 1.8, 0.05, 1.4], 0.012);
+    bunting(g, [s * 0.9, 0.69, 0.5], [s * 1.62, 0.17, 1.22], 4, 0.19);
     rod(g, "#86735b", [s * 1.8, 0, 1.4], [s * 1.8, 0.16, 1.4], 0.03);
   }
   block(g, "#e7c28c", [0, 0.04, 1.4], [1.25, 0.06, 0.7]);
   return t;
 }
-export function chair(g, x = 0, z = 0, color = "#9fb6b0") {
+export function chair(g, x = 0, z = 0, color = "#9fb6b0", backColor = color) {
   const c = group(g, [x, 0, z]);
   for (let side of [-1, 1]) {
     rod(c, "#b19673", [side * 0.4, 0.05, -0.4], [side * 0.4, 0.8, 0.45], 0.04);
     rod(c, "#b19673", [side * 0.4, 0.05, 0.45], [side * 0.4, 1.5, -0.3], 0.04);
   }
   block(c, color, [0, 0.68, 0.04], [0.75, 0.045, 0.8]);
-  const back = block(c, color, [0, 1.12, -0.26], [0.75, 0.7, 0.05]);
+  const back = block(c, backColor, [0, 1.12, -0.26], [0.75, 0.7, 0.05]);
   back.rotation.x = -0.18;
   return c;
 }
@@ -392,18 +411,21 @@ export function camel(g) {
       capsule(c, "#b88b5b", [x, 0.55, z], [0.12, 0.66, 0.12]);
       ball(c, "#80654b", [x, 0.08, z + 0.07], [0.13, 0.08, 0.2]);
     }
-  block(c, "#aa7562", [-0.15, 1.6, 0], [0.85, 0.1, 0.95]);
-  block(c, "#ead7a0", [-0.15, 1.66, 0], [0.7, 0.06, 0.87]);
+  // Saddle blanket: a Virginia Tech layer under a Michigan layer.
+  block(c, SCHOOL.vt[0], [-0.15, 1.6, 0], [0.85, 0.1, 0.95]);
+  block(c, SCHOOL.vt[1], [-0.15, 1.645, 0], [0.77, 0.03, 0.91]);
+  block(c, SCHOOL.um[0], [-0.15, 1.67, 0], [0.7, 0.06, 0.87]);
+  block(c, SCHOOL.um[1], [-0.15, 1.675, 0], [0.14, 0.062, 0.875]);
   rod(c, "#b58b5d", [-0.98, 1.3, 0], [-1.2, 0.8, 0], 0.045);
   return c;
 }
-export function fish(g, color = "#edc587", s = 1) {
+export function fish(g, color = "#edc587", s = 1, finColor = null) {
   const f = group(g);
   ball(f, color, [0, 0, 0], [0.8 * s, 0.43 * s, 0.25 * s]);
   let tail = mesh(
     f,
     new T.ConeGeometry(0.4, 0.6, 3),
-    color,
+    finColor || color,
     [-0.9 * s, 0, 0],
     [s, s, 0.6 * s],
   );
@@ -425,7 +447,7 @@ export function fish(g, color = "#edc587", s = 1) {
   let fin = mesh(
     f,
     new T.ConeGeometry(0.25, 0.4, 3),
-    "#e4a77e",
+    finColor || "#e4a77e",
     [0, 0.4 * s, 0],
     [s, s, s * 0.5],
   );
@@ -458,8 +480,8 @@ export function landmark(theme, index) {
       lantern(g, 1.45, 0.1, 0.3);
     }
     if (index === 1) {
-      chair(g, -0.6, 0, "#b6a1bd");
-      chair(g, 0.85, -0.3, "#a2beb0").rotation.y = -0.4;
+      chair(g, -0.6, 0, SCHOOL.vt[0], SCHOOL.vt[1]);
+      chair(g, 0.85, -0.3, SCHOOL.um[0], SCHOOL.um[1]).rotation.y = -0.4;
       lantern(g, 0.25, 0.07, 0.7);
     }
     if (index === 2) {
@@ -474,8 +496,10 @@ export function landmark(theme, index) {
     if (index === 1) {
       for (let x of [-1, 1]) rod(g, "#967653", [x, 0, 0], [x, 1.9, 0], 0.055);
       block(g, "#d39e7a", [0, 1.9, 0], [2.2, 0.06, 1.6]).rotation.z = 0.07;
-      chair(g, 0, 0, "#c8a17e");
-      lantern(g, 0.8, 0.1, 0.6);
+      bunting(g, [-1.08, 1.82, 0.8], [1.08, 1.97, 0.8], 7, 0.16);
+      chair(g, -0.48, 0.05, SCHOOL.vt[0], SCHOOL.vt[1]).rotation.y = 0.2;
+      chair(g, 0.5, -0.05, SCHOOL.um[0], SCHOOL.um[1]).rotation.y = -0.2;
+      lantern(g, 1.15, 0.1, 0.75);
     }
     if (index === 2) {
       block(g, "#d5b891", [0, 0.45, 0], [1.7, 0.9, 1.1]);
@@ -493,9 +517,9 @@ export function landmark(theme, index) {
   }
   if (theme === "ocean") {
     if (index === 0) {
-      const f = fish(g, "#ecc78b", 1.15);
+      const f = fish(g, SCHOOL.vt[1], 1.15, SCHOOL.vt[0]);
       f.position.y = 1.15;
-      const small = fish(g, "#9fc5d4", 0.5);
+      const small = fish(g, SCHOOL.um[1], 0.5, SCHOOL.um[0]);
       small.position.set(-0.8, 0.5, 0.7);
     }
     if (index === 1) {
@@ -523,6 +547,8 @@ export function landmark(theme, index) {
       const boat = ball(g, "#ddc7a8", [0, 0.35, 0], [1.4, 0.4, 0.65]);
       block(g, "#91b3b4", [0, 0.58, 0], [1.8, 0.07, 0.85]);
       rod(g, "#bda586", [0, 0.6, 0], [0, 2.35, 0], 0.045);
+      schoolFlag(g, SCHOOL.vt, -0.03, 2.18);
+      schoolFlag(g, SCHOOL.um, -0.03, 1.74);
       const sail = new T.Shape();
       sail.moveTo(0.08, 0);
       sail.lineTo(0.08, 1.55);

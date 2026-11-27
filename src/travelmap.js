@@ -50,7 +50,8 @@ export function renderTravel(module, s, h, picture) {
  const vb = viewFor(module, s.region);
  const pins = module.items.map((item, i) => {
   const [x, y] = project(item.lng, item.lat);
-  return `<g class="map-pin" data-place="${i}" data-x="${x.toFixed(2)}" data-y="${y.toFixed(2)}" tabindex="0" role="button" aria-label="${h(item.title)}${item.date ? ', ' + h(item.date) : ''}" aria-pressed="${i === s.item}"><g class="pin-body"><circle class="pin-pulse" r="7" cy="0"/><path d="${PIN}"/><circle cy="-12.6" r="2.5" class="pin-dot"/></g></g>`;
+  const home = Array.isArray(item.home) ? ` home" style="--pin:${h(item.home[0])};--pin-dot:${h(item.home[1] || '#fffaf0')}` : '';
+  return `<g class="map-pin${home}" data-place="${i}" data-x="${x.toFixed(2)}" data-y="${y.toFixed(2)}" tabindex="0" role="button" aria-label="${h(item.title)}${Array.isArray(item.home) ? ', home' : ''}${item.date ? ', ' + h(item.date) : ''}" aria-pressed="${i === s.item}"><g class="pin-body"><circle class="pin-pulse" r="7" cy="0"/><path d="${PIN}"/><circle cy="-12.6" r="2.5" class="pin-dot"/></g></g>`;
  }).join('');
  return `<div class="choice-strip map-regions" aria-label="Choose a map view">${regions.map(r => `<button data-region="${h(r)}" aria-pressed="${r === s.region}">${h(r)}</button>`).join('')}</div>
 <div class="travel-map" data-map style="aspect-ratio:${vb[2].toFixed(2)}/${vb[3].toFixed(2)}">
@@ -63,7 +64,8 @@ export function renderTravel(module, s, h, picture) {
  <div class="map-tip" role="status" hidden></div>
  <p class="map-note" hidden>Map outline unavailable right now. The pins still work.</p>
 </div>
-<div class="map-stops" aria-label="Choose a place">${module.items.map((item, i) => `<button data-place="${i}" aria-pressed="${i === s.item}"${inRegion(item, s.region) ? '' : ' hidden'}><b>${String(i + 1).padStart(2, '0')}</b>${h(item.tab || item.title)}</button>`).join('')}</div>
+${module.items.some(i => Array.isArray(i.home)) ? `<p class="map-legend"><span class="legend-pin"></span>Places I've visited <span class="legend-pin home-swatch">${module.items.filter(i => Array.isArray(i.home)).map(i => `<i style="background:${h(i.home[0])}"></i>`).filter((v, k, a) => a.indexOf(v) === k).join('')}</span>Places I've called home</p>` : ''}
+<div class="map-stops" aria-label="Choose a place">${module.items.map((item, i) => `<button data-place="${i}" aria-pressed="${i === s.item}"${inRegion(item, s.region) ? '' : ' hidden'}${Array.isArray(item.home) ? ` class="home" style="--pin:${h(item.home[0])}"` : ''}><b>${String(i + 1).padStart(2, '0')}</b>${h(item.tab || item.title)}</button>`).join('')}</div>
 <div class="place-slot">${card(module.items[s.item], h, picture)}</div>`;
 }
 
@@ -75,7 +77,8 @@ function sizePins(root) {
  const pins = [...root.querySelectorAll('.map-pin')].map(p => ({ p, x: +p.dataset.x, y: +p.dataset.y })).sort((a, b) => a.x - b.x);
  for (let pass = 0; pass < 3; pass++) for (let i = 0; i < pins.length; i++) for (let j = i + 1; j < pins.length; j++) {
   const a = pins[i], b = pins[j], gap = 15 * k, dx = b.x - a.x;
-  if (Math.abs(b.y - a.y) < 22 * k && Math.abs(dx) < gap) { const push = (gap - Math.abs(dx)) / 2, dir = dx >= 0 ? 1 : -1; a.x -= push * dir; b.x += push * dir; }
+  // Pins stay in their west-to-east order, so a nudge never swaps two cities.
+  if (Math.abs(b.y - a.y) < 22 * k && dx < gap) { const push = (gap - dx) / 2; a.x -= push; b.x += push; }
  }
  pins.forEach(({ p, x, y }) => { p.dataset.px = x; p.setAttribute('transform', `translate(${x.toFixed(2)} ${y}) scale(${k.toFixed(4)})`); });
  // Hide province/state names that would collide with a pin or a bigger region's name.
@@ -104,7 +107,8 @@ function showTip(root, pin, item, h) {
  const tip = root.querySelector('.map-tip'), svg = root.querySelector('svg'), vb = svg.viewBox.baseVal, r = svg.getBoundingClientRect();
  const scale = Math.max(r.width / vb.width, r.height / vb.height), ox = (r.width - vb.width * scale) / 2, oy = (r.height - vb.height * scale) / 2;
  const x = ox + ((pin.dataset.px ?? pin.dataset.x) - vb.x) * scale, y = oy + (pin.dataset.y - vb.y) * scale;
- tip.innerHTML = `<b>${h(item.title)}</b>${item.date ? `<span>${h(item.date)}</span>` : ''}`;
+ const when = [Array.isArray(item.home) ? 'Home' : '', item.date || ''].filter(Boolean).join(' · ');
+ tip.innerHTML = `<b>${h(item.title)}</b>${when ? `<span>${h(when)}</span>` : ''}`;
  tip.hidden = false;
  tip.style.left = Math.min(Math.max(x, 70), r.width - 70) + 'px';
  const below = y < 82;

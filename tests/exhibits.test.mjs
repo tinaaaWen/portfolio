@@ -44,7 +44,7 @@ test('Map sections render a pin and a stop for every place, with the first place
   const host={innerHTML:''};
   for(const module of categories.filter(m=>m.kind==='map')){
    mountExhibit(host,module.id);
-   assert.equal((host.innerHTML.match(/class="map-pin"/g)||[]).length,module.items.length);
+   assert.equal((host.innerHTML.match(/class="map-pin[" ]/g)||[]).length,module.items.length);
    assert.equal((host.innerHTML.match(/<button data-place=/g)||[]).length,module.items.length);
    assert.ok(host.innerHTML.includes('place-card'));
   }

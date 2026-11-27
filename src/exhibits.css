@@ -938,3 +938,14 @@ body[data-theme="ocean"] .work-panel .panel-scene {
 .place-card .spot h4{margin:4px 0 10px;font-size:17px;color:var(--ink)}
 
 .map-stops button[hidden]{display:none}
+
+/* Home pins: places I've lived, in their own colors (school colors for Blacksburg and Ann Arbor). */
+.map-pin.home path{fill:var(--pin)}
+.map-pin.home .pin-dot{fill:var(--pin-dot)}
+.map-pin.home[aria-pressed="true"] path{fill:var(--pin);stroke:var(--ink);stroke-width:2}
+.map-pin.home .pin-pulse{fill:color-mix(in srgb,var(--pin) 35%,transparent)}
+.map-stops button.home b{background:var(--pin);color:#fffaf0}
+.map-legend{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;margin:10px 2px 0;font-size:12px;color:var(--soft)}
+.legend-pin{display:inline-flex;gap:3px;align-items:center}
+.legend-pin:not(.home-swatch)::before,.legend-pin i{content:"";display:inline-block;width:9px;height:9px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:var(--stamp)}
+.legend-pin.home-swatch{margin-left:10px}

@@ -552,6 +552,19 @@
       "intro": "The cities I've explored so far. Hover over a pin to see the city, and click it to see where I went and what I remember.",
       "items": [
         {
+          "title": "Nanyang",
+          "kicker": "Henan, China",
+          "date": "Birth – age 11",
+          "region": "China",
+          "lat": 33.0,
+          "lng": 112.53,
+          "home": [
+            "#c4643f",
+            "#d9b264"
+          ],
+          "summary": "My hometown. I spent my first eleven years here, until my family moved to Zhengzhou when I started middle school."
+        },
+        {
           "title": "Kunming",
           "kicker": "Yunnan, China",
           "date": "Kindergarten",
@@ -647,6 +660,19 @@
           ]
         },
         {
+          "title": "Zhengzhou",
+          "kicker": "Henan, China",
+          "date": "Middle school onward",
+          "region": "China",
+          "lat": 34.75,
+          "lng": 113.62,
+          "home": [
+            "#c4643f",
+            "#d9b264"
+          ],
+          "summary": "My family moved to Zhengzhou, the capital of Henan, when I started middle school, and it has been home ever since."
+        },
+        {
           "title": "Chengde",
           "kicker": "Hebei, China",
           "date": "Middle school",
@@ -718,6 +744,10 @@
                 }
               ]
             }
+          ],
+          "home": [
+            "#8a3650",
+            "#e08a4f"
           ]
         },
         {
@@ -1035,6 +1065,10 @@
                 }
               ]
             }
+          ],
+          "home": [
+            "#34507a",
+            "#efc757"
           ]
         },
         {

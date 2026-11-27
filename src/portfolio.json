@@ -721,6 +721,95 @@
           ]
         },
         {
+          "title": "Natural Bridge",
+          "kicker": "Virginia, USA",
+          "date": "Mar 2023",
+          "region": "United States",
+          "lat": 37.63,
+          "lng": -79.54,
+          "spots": [
+            {
+              "title": "Virginia Safari Park",
+              "date": "Mar 2023",
+              "summary": "A wildlife drive with friends. Right past the entrance, a crowd of huge cattle, llamas and deer blocked the road. With their sheer size and those enormous horns, I was sure an annoyed one could flip our car. But it was thrilling to see them up close, feed them, and even give a few a good scratch.",
+              "images": [
+                {
+                  "src": "/assets/travel-safari-highland-cow.jpg",
+                  "alt": "A shaggy Highland cow with long horns pushing its face up to the car window"
+                },
+                {
+                  "src": "/assets/travel-safari-llamas.jpg",
+                  "alt": "Llamas and fallow deer, one pale with wide antlers, gathered on the road at Virginia Safari Park"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Atlanta",
+          "kicker": "Georgia, USA",
+          "date": "Aug 2023",
+          "region": "United States",
+          "lat": 33.75,
+          "lng": -84.39,
+          "spots": [
+            {
+              "title": "Georgia Aquarium",
+              "date": "Aug 2023",
+              "summary": "My friends and I came to Atlanta for (G)I-DLE's world tour and stayed three or four days. The aquarium was full of sea creatures I had never seen before. In the jellyfish gallery, they glowed under the deep blue light, drifting by so gracefully.",
+              "images": [
+                {
+                  "src": "/assets/travel-jellyfish.jpg",
+                  "alt": "Tina in silhouette in front of a deep blue tank of glowing jellyfish at the Georgia Aquarium"
+                }
+              ]
+            },
+            {
+              "title": "World of Coca-Cola",
+              "date": "Aug 2023",
+              "summary": "Coca-Cola's history, from vintage ads to changing bottle shapes to the brand's story, all wrapped in a retro American vibe. My favorite part was the tasting room at the end. I tried almost every flavor from around the world: some were amazing, and some felt like they were attacking me.",
+              "images": [
+                {
+                  "src": "/assets/travel-coca-cola.jpg",
+                  "alt": "Tina posing in front of a wall of vintage Coca-Cola signs at the World of Coca-Cola"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "San Diego",
+          "kicker": "California, USA",
+          "date": "Sep 2024",
+          "region": "United States",
+          "lat": 32.72,
+          "lng": -117.16,
+          "spots": [
+            {
+              "title": "Old Town San Diego",
+              "date": "Sep 2024",
+              "summary": "I spent a few days in San Diego around the Tapia Conference. Old Town was full of little Mexican shops and restaurants, and with its cacti and painted skulls, it felt like stepping into the world of Coco.",
+              "images": [
+                {
+                  "src": "/assets/travel-old-town.jpg",
+                  "alt": "Tina in sunglasses posing beside giant prickly pear cacti and yucca in Old Town San Diego"
+                }
+              ]
+            },
+            {
+              "title": "Balboa Park",
+              "date": "Sep 2024",
+              "summary": "I also visited a filming location of the hit K-drama The Heirs. California really feels open and free. After years on the East Coast, I could feel the difference.",
+              "images": [
+                {
+                  "src": "/assets/travel-balboa-park.jpg",
+                  "alt": "Tina with arms spread on the palm-lined promenade of Balboa Park under a dramatic sky"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "title": "New Orleans",
           "kicker": "Louisiana, USA",
           "date": "Dec 2024",
@@ -772,6 +861,31 @@
                 {
                   "src": "/assets/travel-pensacola-frisbee.jpg",
                   "alt": "Tina winding up to throw a blue frisbee on the beach with waves behind her"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Charlotte",
+          "kicker": "North Carolina, USA",
+          "date": "Feb 2025",
+          "region": "United States",
+          "lat": 35.23,
+          "lng": -80.84,
+          "spots": [
+            {
+              "title": "Spectrum Center",
+              "date": "Feb 2025",
+              "summary": "Two days in Charlotte for an aespa concert. A huge NBA arena, and I was there for K-pop! The crowd's energy was amazing, and other fans even handed out merch they had made themselves.",
+              "images": [
+                {
+                  "src": "/assets/travel-spectrum-center.jpg",
+                  "alt": "View from the upper deck of Spectrum Center as fans fill the floor before the concert"
+                },
+                {
+                  "src": "/assets/travel-aespa-concert.jpg",
+                  "alt": "aespa on stage with a member shown on the giant red-lit screen"
                 }
               ]
             }

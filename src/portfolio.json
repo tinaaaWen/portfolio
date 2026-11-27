@@ -721,6 +721,120 @@
           ]
         },
         {
+          "title": "Virginia Beach",
+          "kicker": "Virginia, USA",
+          "date": "2021 – 2025",
+          "region": "United States",
+          "lat": 36.85,
+          "lng": -75.98,
+          "spots": [
+            {
+              "title": "The Oceanfront",
+              "date": "Summers, 2021 – 2025",
+              "summary": "During my Virginia Tech years I came here almost every summer and winter break. Summers meant splashing in the waves and eating fresh seafood.",
+              "images": [
+                {
+                  "src": "/assets/travel-virginia-beach.jpg",
+                  "alt": "Tina laughing as she splashes through the waves at Virginia Beach under a clear blue sky"
+                }
+              ]
+            },
+            {
+              "title": "Downtown at Christmas",
+              "date": "Winters, 2021 – 2025",
+              "summary": "In winter, I came downtown to soak up the Christmas spirit.",
+              "images": [
+                {
+                  "src": "/assets/travel-virginia-beach-christmas.jpg",
+                  "alt": "Tina waving beside a giant snow globe with Santa and Mrs. Claus inside, glowing with holiday lights"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Gatlinburg",
+          "kicker": "Tennessee, USA",
+          "date": "Mar 2022",
+          "region": "United States",
+          "lat": 35.71,
+          "lng": -83.51,
+          "spots": [
+            {
+              "title": "Great Smoky Mountains",
+              "date": "Mar 2022",
+              "summary": "A spring-break team trip with friends from my xiangsheng (Chinese crosstalk comedy) club. We hiked two trails and took a group photo at a scenic overlook.",
+              "images": [
+                {
+                  "src": "/assets/travel-smoky-mountains.jpg",
+                  "alt": "Tina and five club friends (faces blurred) posing at a mountain overlook with the Smokies and big clouds behind them"
+                }
+              ]
+            },
+            {
+              "title": "Ripley's Aquarium of the Smokies",
+              "date": "Mar 2022",
+              "summary": "We also visited the aquarium, where sharks glided over a sunken shipwreck.",
+              "images": [
+                {
+                  "src": "/assets/travel-smokies-aquarium.jpg",
+                  "alt": "Tina in a pink cap watching sharks and schools of fish swim around a shipwreck in a large aquarium tank"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Hilton Head Island",
+          "kicker": "South Carolina, USA",
+          "date": "Dec 2022",
+          "region": "United States",
+          "lat": 32.22,
+          "lng": -80.75,
+          "spots": [
+            {
+              "title": "Hilton Head beaches",
+              "date": "Dec 2022",
+              "summary": "My family and I spent Christmas here over winter break, watching the sunrise over the ocean and walking along the beach. I love the sea: calm and peaceful, yet able to hold everything. My favorite moments were sitting on our Airbnb balcony, listening to the waves wash over the sand.",
+              "images": [
+                {
+                  "src": "/assets/travel-hilton-head-sunrise.jpg",
+                  "alt": "Tina silhouetted against a golden sunrise over the ocean on Hilton Head Island"
+                },
+                {
+                  "src": "/assets/travel-hilton-head.jpg",
+                  "alt": "A curving tidal pool rippling across wide, pale sand under a deep blue sky"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Savannah",
+          "kicker": "Georgia, USA",
+          "date": "Dec 2022",
+          "region": "United States",
+          "lat": 32.08,
+          "lng": -81.09,
+          "spots": [
+            {
+              "title": "Historic District",
+              "date": "Dec 2022",
+              "summary": "After Hilton Head, we spent a day exploring Savannah, and I fell in love with it. The whole city breathes art: every little detail, from a lock to the graffiti on an exposed pipe, is creative and beautiful. Every fifty or hundred meters there's another small park square, where sunlight falls through towering trees and turns the moment itself into art.",
+              "images": [
+                {
+                  "src": "/assets/travel-savannah-square.jpg",
+                  "alt": "Tina standing on a brick path in one of Savannah's park squares beneath huge sunlit oak trees"
+                },
+                {
+                  "src": "/assets/travel-savannah-shop.jpg",
+                  "alt": "An “I ♥ Savannah” sign painted on a shop window full of colorful socks and oven mitts"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "title": "Natural Bridge",
           "kicker": "Virginia, USA",
           "date": "Mar 2023",

@@ -936,3 +936,5 @@ body[data-theme="ocean"] .work-panel .panel-scene {
 .map-labels text{fill:color-mix(in srgb,var(--ink) 72%,var(--paper));text-anchor:middle;dominant-baseline:middle;font-weight:600;letter-spacing:.02em;paint-order:stroke;stroke:color-mix(in srgb,var(--paper-deep) 70%,var(--stamp));stroke-width:2.2px;stroke-linejoin:round;vector-effect:non-scaling-stroke}
 .place-card .spot+.spot{margin-top:22px;padding-top:18px;border-top:1px dashed var(--line)}
 .place-card .spot h4{margin:4px 0 10px;font-size:17px;color:var(--ink)}
+
+.map-stops button[hidden]{display:none}

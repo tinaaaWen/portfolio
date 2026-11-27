@@ -687,6 +687,238 @@
               ]
             }
           ]
+        },
+        {
+          "title": "Blacksburg",
+          "kicker": "Virginia, USA",
+          "date": "2021 – 2025 · Undergrad",
+          "region": "United States",
+          "lat": 37.23,
+          "lng": -80.41,
+          "spots": [
+            {
+              "title": "Virginia Tech",
+              "date": "2021 – 2025",
+              "summary": "Blacksburg was home for my four years of undergrad at Virginia Tech. The library saw countless late nights of debugging code and rerunning tests, and the tulip beds that bloom every spring watched me grow up, all the way to graduation.",
+              "images": [
+                {
+                  "src": "/assets/travel-vt-tulips.jpg",
+                  "alt": "Tina in her Virginia Tech graduation gown and stole beside beds of yellow tulips and purple pansies"
+                }
+              ]
+            },
+            {
+              "title": "Lane Stadium",
+              "date": "2021 – 2025",
+              "summary": "Going to a Hokies football game was a must every single year, even on freezing nights bundled up in a scarf and mask.",
+              "images": [
+                {
+                  "src": "/assets/travel-lane-stadium.jpg",
+                  "alt": "Tina bundled in a scarf and mask, flashing a peace sign above the field at Lane Stadium during a night game"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "New Orleans",
+          "kicker": "Louisiana, USA",
+          "date": "Dec 2024",
+          "region": "United States",
+          "lat": 29.95,
+          "lng": -90.07,
+          "spots": [
+            {
+              "title": "Canal Street",
+              "date": "Dec 2024",
+              "summary": "A winter-break trip with my family during my senior year. Downtown felt like the East and West Coasts rolled into one: skyscrapers and palm trees, a web of overhead wires and historic streetcars. I also tried fried alligator, alligator sausage and authentic Cajun food for the first time.",
+              "images": [
+                {
+                  "src": "/assets/travel-canal-street.jpg",
+                  "alt": "Canal Street lined with palm trees and lampposts, streetcar tracks running toward a high-rise, with a streetcar on the right"
+                }
+              ]
+            },
+            {
+              "title": "Louis Armstrong Park",
+              "date": "Dec 2024",
+              "summary": "We happened to arrive just as a small music performance was starting, and the whole park felt joyful.",
+              "images": [
+                {
+                  "src": "/assets/travel-armstrong-park.jpg",
+                  "alt": "Tina pointing up at the illuminated Armstrong arch at the entrance of Louis Armstrong Park"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Pensacola",
+          "kicker": "Florida, USA",
+          "date": "Dec 2024",
+          "region": "United States",
+          "lat": 30.42,
+          "lng": -87.22,
+          "spots": [
+            {
+              "title": "Pensacola Beach",
+              "date": "Dec 2024",
+              "summary": "Right after New Orleans we drove here to see the famous white sand. I was curious whether it would feel different under my feet from ordinary sand. Apart from the color, not much, maybe just a little finer. We played frisbee on the beach and, for a while, forgot all about grad school application season.",
+              "images": [
+                {
+                  "src": "/assets/travel-pensacola-beach.jpg",
+                  "alt": "Tina smiling in sunglasses on the white sand of Pensacola Beach"
+                },
+                {
+                  "src": "/assets/travel-pensacola-frisbee.jpg",
+                  "alt": "Tina winding up to throw a blue frisbee on the beach with waves behind her"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Ann Arbor",
+          "kicker": "Michigan, USA",
+          "date": "2025 – 2027 · Grad school",
+          "region": "United States",
+          "lat": 42.28,
+          "lng": -83.74,
+          "spots": [
+            {
+              "title": "Gallup Park",
+              "date": "Fall 2025",
+              "summary": "Ann Arbor is where I live now while doing my master's at the University of Michigan. I love its distinct seasons and how calm and close to nature it feels. This photo is from a fall walk with friends at Gallup Park. I love its colors: so many of them, yet all in harmony.",
+              "images": [
+                {
+                  "src": "/assets/travel-gallup-park.jpg",
+                  "alt": "Tina striking a dance pose by the Huron River in Gallup Park, with red maple leaves and a bridge behind her"
+                }
+              ]
+            },
+            {
+              "title": "Michigan Stadium",
+              "date": "Fall 2026",
+              "summary": "I love watching football. At the Big House I saw Michigan grind out a hard-fought win over UCLA, ranked No. 4 before the game, and snap their winning streak. I'm proud to be a Wolverine, and that game stuck with me: preseason rankings and scoreboards are only predictions and moments, not the final result. The fight may be tough, but giving it everything can still get you the ending you want.",
+              "images": [
+                {
+                  "src": "/assets/travel-big-house.jpg",
+                  "alt": "Tina in Michigan maize and blue standing in the stands of Michigan Stadium before kickoff"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Detroit",
+          "kicker": "Michigan, USA",
+          "date": "Oct 2025",
+          "region": "United States",
+          "lat": 42.33,
+          "lng": -83.05,
+          "spots": [
+            {
+              "title": "Guardian Building",
+              "date": "Oct 2025",
+              "summary": "A fall-break day trip. The Guardian Building's lobby is dazzling, a window into early American architecture, where ornate European grandeur turns into the cleaner, bolder lines of Art Deco.",
+              "images": [
+                {
+                  "src": "/assets/travel-guardian-building.jpg",
+                  "alt": "The vaulted Art Deco ceiling of the Guardian Building with a colorful mural of Michigan beneath it"
+                }
+              ]
+            },
+            {
+              "title": "Monument to Joe Louis",
+              "date": "Oct 2025",
+              "summary": "“The Fist,” a giant bronze arm honoring the boxer Joe Louis. It faces Canada across the Detroit River, and it left a strong impression on me.",
+              "images": [
+                {
+                  "src": "/assets/travel-joe-louis-fist.jpg",
+                  "alt": "The giant bronze fist of the Monument to Joe Louis hanging from a pyramid frame in downtown Detroit"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Chicago",
+          "kicker": "Illinois, USA",
+          "date": "Mar 2026",
+          "region": "United States",
+          "lat": 41.88,
+          "lng": -87.63,
+          "spots": [
+            {
+              "title": "Cloud Gate",
+              "date": "Mar 2026",
+              "summary": "I spent spring break in Chicago working on a project for the American Library Association and explored the city in my free time. At first the Bean seemed oddly cyberpunk, dropped into a plaza of grand skyscrapers. But after learning its design idea and seeing the whole skyline reflected on its surface, I was truly impressed by the artist.",
+              "images": [
+                {
+                  "src": "/assets/travel-cloud-gate.jpg",
+                  "alt": "Tina jumping with arms spread in front of Cloud Gate, which reflects the Chicago skyline"
+                }
+              ]
+            },
+            {
+              "title": "Chinatown",
+              "date": "Mar 2026",
+              "summary": "Authentic Chinese food, milk tea and pastries. I left very full and very happy.",
+              "images": [
+                {
+                  "src": "/assets/travel-chicago-chinatown.jpg",
+                  "alt": "Tina holding a drink below a sign reading “you are beautiful” in English and Chinese in Chicago's Chinatown"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "State College",
+          "kicker": "Pennsylvania, USA",
+          "date": "Aug 2026",
+          "region": "United States",
+          "lat": 40.79,
+          "lng": -77.86,
+          "spots": [
+            {
+              "title": "Penn State EECS",
+              "date": "Aug 2026",
+              "summary": "After my summer internship I visited a friend at Penn State, the school I had planned to attend before my Virginia Tech offer arrived. So I stopped by the School of EECS, the place I almost called home.",
+              "images": [
+                {
+                  "src": "/assets/travel-penn-state-eecs.jpg",
+                  "alt": "Banner for the Penn State School of Electrical Engineering and Computer Science"
+                }
+              ]
+            },
+            {
+              "title": "Berkey Creamery",
+              "date": "Aug 2026",
+              "summary": "My friend took me for ice cream made by Penn State's own creamery. The cones were enormous. Even stuffed, I only finished half. I chose Peachy Paterno, a peach flavor named after the school's legendary football coach, and it was delicious.",
+              "images": [
+                {
+                  "src": "/assets/travel-creamery.jpg",
+                  "alt": "Two huge ice cream cones from the Penn State Berkey Creamery"
+                }
+              ]
+            },
+            {
+              "title": "Penn's Cave & Wildlife Park",
+              "date": "Aug 2026",
+              "summary": "My first boat tour through a cave: our little boat drifted into the cold, dark cavern while lights picked out stalactites of every shape. It felt like entering a mysterious other world. Then a bus tour of the wildlife park, where the wolves and the mountain lions stood out. The mountain lions looked just like Penn State's Nittany Lion: elegant, proud and surveying everything like royalty.",
+              "images": [
+                {
+                  "src": "/assets/travel-penns-cave.jpg",
+                  "alt": "Stalactites and flowstone lit up inside Penn's Cave"
+                },
+                {
+                  "src": "/assets/travel-mountain-lions.jpg",
+                  "alt": "Two mountain lions resting in the shade of a rock den at Penn's Cave Wildlife Park"
+                }
+              ]
+            }
+          ]
         }
       ]
     }

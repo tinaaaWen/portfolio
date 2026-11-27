@@ -12,6 +12,7 @@ const S = W / (2 * ne1(180, 0)[0]), TOP = ne1(0, 84)[1], H = (TOP - ne1(0, -57)[
 export const project = (lng, lat) => { const [x, y] = ne1(lng, lat); return [W / 2 + x * S, (TOP - y) * S]; };
 
 const WORLD = 'World';
+const inRegion = (item, region) => region === WORLD || item.region === region;
 // Regions with a fixed frame and province/state outlines + names.
 const REGIONS = { China: { iso: 'CHN', b: [73.5, 18, 134.8, 53.6] }, 'United States': { iso: 'USA', b: [-124.8, 24.5, -66.9, 49.4] } };
 const PIN = 'M0 0C-1.6-4.6-6.4-7.8-6.4-12.6A6.4 6.4 0 1 1 6.4-12.6C6.4-7.8 1.6-4.6 0 0Z';
@@ -45,6 +46,7 @@ function card(item, h, picture) {
 export function renderTravel(module, s, h, picture) {
  const regions = regionsOf(module);
  if (!regions.includes(s.region)) s.region = regions[1] || WORLD;
+ if (!inRegion(module.items[s.item], s.region)) s.item = Math.max(0, module.items.findIndex(i => inRegion(i, s.region)));
  const vb = viewFor(module, s.region);
  const pins = module.items.map((item, i) => {
   const [x, y] = project(item.lng, item.lat);
@@ -61,7 +63,7 @@ export function renderTravel(module, s, h, picture) {
  <div class="map-tip" role="status" hidden></div>
  <p class="map-note" hidden>Map outline unavailable right now. The pins still work.</p>
 </div>
-<div class="map-stops" aria-label="Choose a place">${module.items.map((item, i) => `<button data-place="${i}" aria-pressed="${i === s.item}"><b>${String(i + 1).padStart(2, '0')}</b>${h(item.tab || item.title)}</button>`).join('')}</div>
+<div class="map-stops" aria-label="Choose a place">${module.items.map((item, i) => `<button data-place="${i}" aria-pressed="${i === s.item}"${inRegion(item, s.region) ? '' : ' hidden'}><b>${String(i + 1).padStart(2, '0')}</b>${h(item.tab || item.title)}</button>`).join('')}</div>
 <div class="place-slot">${card(module.items[s.item], h, picture)}</div>`;
 }
 
@@ -69,9 +71,15 @@ function sizePins(root) {
  const svg = root.querySelector('svg'), vb = svg.viewBox.baseVal, r = svg.getBoundingClientRect();
  const k = r.width ? Math.min(vb.width / r.width, vb.height / r.height) : vb.width / 520;
  root.querySelectorAll('.map-labels text').forEach(t => t.setAttribute('font-size', (8.5 * k).toFixed(3)));
- root.querySelectorAll('.map-pin').forEach(p => p.setAttribute('transform', `translate(${p.dataset.x} ${p.dataset.y}) scale(${k.toFixed(4)})`));
+ // Nudge pins that would sit on top of each other (e.g. Ann Arbor and Detroit) apart sideways.
+ const pins = [...root.querySelectorAll('.map-pin')].map(p => ({ p, x: +p.dataset.x, y: +p.dataset.y })).sort((a, b) => a.x - b.x);
+ for (let pass = 0; pass < 3; pass++) for (let i = 0; i < pins.length; i++) for (let j = i + 1; j < pins.length; j++) {
+  const a = pins[i], b = pins[j], gap = 15 * k, dx = b.x - a.x;
+  if (Math.abs(b.y - a.y) < 22 * k && Math.abs(dx) < gap) { const push = (gap - Math.abs(dx)) / 2, dir = dx >= 0 ? 1 : -1; a.x -= push * dir; b.x += push * dir; }
+ }
+ pins.forEach(({ p, x, y }) => { p.dataset.px = x; p.setAttribute('transform', `translate(${x.toFixed(2)} ${y}) scale(${k.toFixed(4)})`); });
  // Hide province/state names that would collide with a pin or a bigger region's name.
- const boxes = [...root.querySelectorAll('.map-pin')].map(p => { const x = +p.dataset.x, y = +p.dataset.y; return [x - 8 * k, y - 21 * k, x + 8 * k, y + 2 * k]; });
+ const boxes = pins.map(({ x, y }) => [x - 8 * k, y - 21 * k, x + 8 * k, y + 2 * k]);
  const fs = 8.5 * k;
  root.querySelectorAll('.map-admin.on .map-labels text').forEach(t => {
   const x = +t.getAttribute('x'), y = +t.getAttribute('y'), hw = t.textContent.length * fs * .3 + 2 * k, hh = fs * .6;
@@ -95,7 +103,7 @@ function animateTo(root, target) {
 function showTip(root, pin, item, h) {
  const tip = root.querySelector('.map-tip'), svg = root.querySelector('svg'), vb = svg.viewBox.baseVal, r = svg.getBoundingClientRect();
  const scale = Math.max(r.width / vb.width, r.height / vb.height), ox = (r.width - vb.width * scale) / 2, oy = (r.height - vb.height * scale) / 2;
- const x = ox + (pin.dataset.x - vb.x) * scale, y = oy + (pin.dataset.y - vb.y) * scale;
+ const x = ox + ((pin.dataset.px ?? pin.dataset.x) - vb.x) * scale, y = oy + (pin.dataset.y - vb.y) * scale;
  tip.innerHTML = `<b>${h(item.title)}</b>${item.date ? `<span>${h(item.date)}</span>` : ''}`;
  tip.hidden = false;
  tip.style.left = Math.min(Math.max(x, 70), r.width - 70) + 'px';
@@ -147,7 +155,12 @@ function setRegion(region) {
  root.querySelectorAll('[data-admin]').forEach(g => g.classList.toggle('on', g.dataset.admin === region));
  const vb = viewFor(module, region);
  root.style.aspectRatio = `${vb[2].toFixed(2)}/${vb[3].toFixed(2)}`;
+ host.querySelectorAll('.map-stops [data-place]').forEach(b => { b.hidden = !inRegion(module.items[b.dataset.place], region); });
  animateTo(root, vb);
+ if (!inRegion(module.items[s.item], region)) {
+  const first = module.items.findIndex(i => inRegion(i, region));
+  if (first >= 0) { s.item = first; host.querySelectorAll('[data-place]').forEach(b => b.setAttribute('aria-pressed', String(Number(b.dataset.place) === first))); host.querySelector('.place-slot').innerHTML = card(module.items[first], active.h, active.picture); }
+ }
 }
 
 document.addEventListener('click', e => {

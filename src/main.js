@@ -21,8 +21,18 @@ document.querySelector('.welcome-story').textContent = profile.intro || `Hi, I'm
 document.querySelector('meta[name="description"]').content = profile.intro || `${profile.name}'s portfolio`;
 $("world").setAttribute('aria-label', `${profile.title}: 3D island`);
 $("camp-total").textContent = String(categories.length).padStart(2,'0');
-$("channel").hidden = !profile.links.length;
-if(profile.links.length) $("channel").textContent = `${profile.links[0].label} ↗`;
+// Profile links (LinkedIn, Handshake): under the intro on the welcome screen, and in the top-right menu.
+const linkHTML = (l) => `<a href="${escapeHTML(l.url)}" target="_blank" rel="noopener noreferrer">${escapeHTML(l.label)}<span aria-hidden="true">↗</span></a>`;
+if (profile.links.length) {
+  $("profile-links").innerHTML = profile.links.map(linkHTML).join('<span class="dot" aria-hidden="true">·</span>');
+  $("profile-links").hidden = false;
+  $("contact-menu").insertAdjacentHTML("beforeend", profile.links.map(linkHTML).join(""));
+  $("contact").hidden = false;
+}
+const setContact = (open) => { $("contact-menu").hidden = !open; $("contact").setAttribute("aria-expanded", String(open)); };
+$("contact").addEventListener("click", (e) => { e.stopPropagation(); setContact($("contact-menu").hidden); });
+document.addEventListener("click", (e) => { if (!$("contact-menu").hidden && !e.target.closest(".contact-wrap")) setContact(false); });
+document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !$("contact-menu").hidden) { setContact(false); $("contact").focus(); } });
 categories.forEach((c, i) => {
   const label = document.createElement("button");
   label.className = "camp-label";
@@ -117,7 +127,6 @@ $("home").addEventListener("click", () => {
   document.body.classList.remove("exploring");
   $("welcome").removeAttribute("inert");
 });
-$("channel").addEventListener("click", () => { const link = profile.links[0]; if(link) window.open(link.url,"_blank","noopener,noreferrer"); });
 const help = $("help-dialog");
 $("help").addEventListener("click", () => {
   island?.stop();

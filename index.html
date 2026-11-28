@@ -36,6 +36,25 @@
               <span>≈</span> Ocean
             </button>
           </div>
+          <div class="contact-wrap">
+            <button
+              id="contact"
+              class="round-button"
+              aria-label="Find me online"
+              aria-expanded="false"
+              aria-controls="contact-menu"
+              hidden
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <rect x="3" y="5" width="18" height="14" rx="2.5" />
+                <circle cx="9" cy="11" r="2.2" />
+                <path d="M5.8 16.2c.6-1.6 1.8-2.4 3.2-2.4s2.6.8 3.2 2.4M14.5 10h4M14.5 13.5h3" />
+              </svg>
+            </button>
+            <div id="contact-menu" class="contact-menu" hidden>
+              <p class="eyebrow">FIND ME ONLINE</p>
+            </div>
+          </div>
           <button
             id="sound"
             class="round-button"
@@ -78,9 +97,7 @@
         </div>
         <button id="explore" class="primary-button">
           Start exploring <span>↗</span></button
-        ><button id="channel" class="channel-link">
-          Get in touch <span>↗</span>
-        </button>
+        ><p id="profile-links" class="profile-links" hidden></p>
         <p class="welcome-note">You can also walk with WASD or the arrow keys</p>
       </section>
       <div id="camp-labels" aria-label="Places on the island"></div>

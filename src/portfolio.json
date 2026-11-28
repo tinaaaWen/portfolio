@@ -5,7 +5,16 @@
     "title": "Yiting (Tina)'s Island",
     "subtitle": "WORK · PROJECTS · TRAVEL · VOLUNTEER",
     "intro": "Hi, I'm Tina Wen, a student at the University of Michigan School of Information. I build data tools and interfaces, from power-market maps and AI data pipelines to research monitoring tools, and I care about the people who use them. Walk around the island to see my work, my projects, the places I've explored, and the communities I volunteer with.",
-    "links": []
+    "links": [
+      {
+        "label": "LinkedIn",
+        "url": "https://www.linkedin.com/in/tina-wen-umich2027/"
+      },
+      {
+        "label": "Handshake",
+        "url": "https://umich.joinhandshake.com/profiles/yitingwen27"
+      }
+    ]
   },
   "modules": [
     {

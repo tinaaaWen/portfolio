@@ -16,8 +16,8 @@
       <div class="edge-light" aria-hidden="true"></div>
       <div id="loading" role="status">
         <div class="loading-island">✳</div>
-        <p>Sailing to the island…</p>
-        <span>A LITTLE WORLD, A LOT TO DISCOVER.</span>
+        <p data-i18n>Sailing to the island…</p>
+        <span data-i18n>A LITTLE WORLD, A LOT TO DISCOVER.</span>
       </div>
       <header class="topbar">
         <button id="home" class="brand" aria-label="Show welcome">
@@ -29,12 +29,16 @@
         <div class="top-controls">
           <div class="theme-picker" role="group" aria-label="Island theme">
             <button data-theme="forest" aria-pressed="true">
-              <span>♧</span> Forest</button
+              <span>♧</span> <span data-i18n>Forest</span></button
             ><button data-theme="desert" aria-pressed="false">
-              <span>☼</span> Desert</button
+              <span>☼</span> <span data-i18n>Desert</span></button
             ><button data-theme="ocean" aria-pressed="false">
-              <span>≈</span> Ocean
+              <span>≈</span> <span data-i18n>Ocean</span>
             </button>
+          </div>
+          <div class="lang-picker" role="group" aria-label="Language">
+            <button data-lang="en" aria-pressed="true" lang="en">EN</button
+            ><button data-lang="zh" aria-pressed="false" lang="zh">中</button>
           </div>
           <div class="contact-wrap">
             <button
@@ -52,7 +56,7 @@
               </svg>
             </button>
             <div id="contact-menu" class="contact-menu" hidden>
-              <p class="eyebrow">FIND ME ONLINE</p>
+              <p class="eyebrow" data-i18n="FIND ME ONLINE">FIND ME ONLINE</p>
             </div>
           </div>
           <button
@@ -78,7 +82,7 @@
         </div>
       </header>
       <section id="welcome" class="welcome">
-        <p class="eyebrow"><span></span> A WORLD OF YOUR OWN</p>
+        <p class="eyebrow"><span></span> <b class="eyebrow-text" data-i18n>A WORLD OF YOUR OWN</b></p>
         <h1>
           Welcome to<br /><span>the island<span class="title-dot">.</span></span>
         </h1>
@@ -87,18 +91,18 @@
         </p>
         <div class="welcome-instructions">
           <p>
-            <span class="instruction-symbol">↔</span><b>Drag to look around</b
-            ><span>See the island in 360°</span>
+            <span class="instruction-symbol">↔</span><b data-i18n>Drag to look around</b
+            ><span data-i18n>See the island in 360°</span>
           </p>
           <p>
-            <span class="instruction-symbol">⌖</span><b>Click to walk</b
-            ><span>Walk to a glowing spot to open a story</span>
+            <span class="instruction-symbol">⌖</span><b data-i18n>Click to walk</b
+            ><span data-i18n>Walk to a glowing spot to open a story</span>
           </p>
         </div>
         <button id="explore" class="primary-button">
-          Start exploring <span>↗</span></button
+          <span data-i18n>Start exploring</span> <span>↗</span></button
         ><p id="profile-links" class="profile-links" hidden></p>
-        <p class="welcome-note">You can also walk with WASD or the arrow keys</p>
+        <p class="welcome-note" data-i18n>You can also walk with WASD or the arrow keys</p>
       </section>
       <div id="camp-labels" aria-label="Places on the island"></div>
       <aside id="work" class="work-panel" aria-label="Section details" hidden>
@@ -150,7 +154,7 @@
           <p id="work-description"></p>
           <div id="work-sections"></div>
           <button id="continue" class="continue-button">
-            Back to the island <span>→</span>
+            <span data-i18n>Back to the island</span> <span>→</span>
           </button>
         </div>
       </aside>
@@ -172,7 +176,7 @@
             <circle cx="12" cy="12" r="8" />
             <path d="M4 12h16M12 4c5 4 5 12 0 16-5-4-5-12 0-16Z" />
           </svg>
-          Island overview <span>↗</span>
+          <span data-i18n>Island overview</span> <span>↗</span>
         </button>
         <div class="minimap" aria-label="Island map">
           <span class="map-north">N</span>
@@ -181,7 +185,7 @@
             <div id="map-sites"></div>
             <span id="map-player" aria-label="You are here"></span>
           </div>
-          <span class="map-caption"><i></i> You are here</span>
+          <span class="map-caption"><i></i> <span data-i18n>You are here</span></span>
         </div>
         <div class="compass" aria-hidden="true">
           <span id="compass-needle">↑</span><span>N</span>
@@ -199,10 +203,10 @@
         ></nav>
         <div class="discovery">
           <span id="visited-count">00</span
-          ><span>/ <b id="camp-total">04</b><small>explored</small></span>
+          ><span>/ <b id="camp-total">04</b><small data-i18n>explored</small></span>
         </div>
       </footer>
-      <div id="walk-status" class="walk-status" role="status">
+      <div id="walk-status" class="walk-status" role="status" data-i18n>
         Click the ground to explore
       </div>
       <div class="touch-pad" aria-label="Movement controls">
@@ -216,43 +220,43 @@
         <button id="close-help" class="close-button" aria-label="Close guide">
           ×
         </button>
-        <p class="eyebrow">A FIELD GUIDE</p>
-        <h2>How to explore</h2>
+        <p class="eyebrow" data-i18n>A FIELD GUIDE</p>
+        <h2 data-i18n>How to explore</h2>
         <p class="help-intro">
-          There is no set route, so go anywhere.<br />Every glowing spot holds a story.
+          <span data-i18n>There is no set route, so go anywhere.</span><br /><span data-i18n>Every glowing spot holds a story.</span>
         </p>
         <dl>
           <div>
-            <dt>Look around</dt>
-            <dd>Drag with your mouse or one finger to turn 360°.</dd>
+            <dt data-i18n>Look around</dt>
+            <dd data-i18n>Drag with your mouse or one finger to turn 360°.</dd>
           </div>
           <div>
-            <dt>Zoom</dt>
-            <dd>Scroll or pinch to zoom in and out.</dd>
+            <dt data-i18n>Zoom</dt>
+            <dd data-i18n>Scroll or pinch to zoom in and out.</dd>
           </div>
           <div>
-            <dt>Walk</dt>
-            <dd>Click the ground, or use WASD or the arrow keys. On a phone, hold the arrow pad at the bottom left.</dd>
+            <dt data-i18n>Walk</dt>
+            <dd data-i18n>Click the ground, or use WASD or the arrow keys. On a phone, hold the arrow pad at the bottom left.</dd>
           </div>
           <div>
-            <dt>Open a section</dt>
-            <dd>
+            <dt data-i18n>Open a section</dt>
+            <dd data-i18n>
               Step onto a glowing circle to open a section. Clicking a section name or map marker walks you there.
             </dd>
           </div>
           <div>
-            <dt>Change the scenery</dt>
-            <dd>Switch between Forest, Desert and Ocean. Your place and content stay the same.</dd>
+            <dt data-i18n>Change the scenery</dt>
+            <dd data-i18n>Switch between Forest, Desert and Ocean. Your place and content stay the same.</dd>
           </div>
         </dl>
         <p class="help-foot">
-          Lakes and the shoreline keep you on the island.<br />Press Esc to close any panel.
+          <span data-i18n>Lakes and the shoreline keep you on the island.</span><br /><span data-i18n>Press Esc to close any panel.</span>
         </p>
-        <button id="help-done" class="primary-button">Got it, let's go ↗</button>
+        <button id="help-done" class="primary-button" data-i18n>Got it, let's go ↗</button>
       </dialog>
       <div id="fallback" hidden>
-        <h2>This island needs WebGL</h2>
-        <p>You can still read everything from the sections below. Open the page in a browser with WebGL to walk around.</p>
+        <h2 data-i18n>This island needs WebGL</h2>
+        <p data-i18n>You can still read everything from the sections below. Open the page in a browser with WebGL to walk around.</p>
       </div>
     </main>
     <script type="module" src="/src/main.js"></script>

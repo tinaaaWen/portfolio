@@ -3,6 +3,7 @@ import "./exhibits.css";
 import { mountExhibit } from "./exhibits.js";
 import { categories, themes, profile } from "./content.js";
 import { escapeHTML } from "./schema.js";
+import { lang, setLang, t, translatePage } from "./i18n.js";
 import { createIsland } from "./island.js";
 import { ForestAudio } from "./audio.js";
 const $ = (id) => document.getElementById(id),
@@ -13,13 +14,25 @@ let island,
   started = false,
   toastTimer,
   webglFailed = false;
+translatePage();
+document.querySelectorAll(".lang-picker button").forEach((b) => {
+  b.setAttribute("aria-pressed", String(b.dataset.lang === lang));
+  b.addEventListener("click", () => {
+    if (b.dataset.lang === lang) return;
+    // Keep the visitor's place (theme, open section) across the reload into the other language.
+    try { sessionStorage.setItem("portfolio-resume", JSON.stringify({ started, active, theme: document.body.dataset.theme })); } catch {}
+    setLang(b.dataset.lang);
+  });
+});
+$("theme-english").textContent = themes.forest.english;
+$("theme-caption").textContent = themes.forest.caption;
 document.title = `${profile.title} · ${profile.name}`;
 const brand = document.querySelector('.brand > span:last-child');
 if (brand) brand.innerHTML = `${escapeHTML(profile.title)}<small>${escapeHTML(profile.subtitle || 'A WORLD OF CURIOSITY')}</small>`;
-document.querySelector('.welcome h1').innerHTML = `Welcome to<br /><span>${escapeHTML(profile.title)}<span class="title-dot">.</span></span>`;
-document.querySelector('.welcome-story').textContent = profile.intro || `Hi, I'm ${profile.name}. Welcome to my portfolio.`;
+document.querySelector('.welcome h1').innerHTML = `${escapeHTML(t("welcomeTo"))}<br /><span>${escapeHTML(t("welcomeTitle", { title: profile.title }))}<span class="title-dot">${escapeHTML(t("welcomeEnd"))}</span></span>`;
+document.querySelector('.welcome-story').textContent = profile.intro || t("defaultIntro", { name: profile.name });
 document.querySelector('meta[name="description"]').content = profile.intro || `${profile.name}'s portfolio`;
-$("world").setAttribute('aria-label', `${profile.title}: 3D island`);
+$("world").setAttribute('aria-label', t("worldLabel", { title: profile.title }));
 $("camp-total").textContent = String(categories.length).padStart(2,'0');
 // Profile links (LinkedIn, Handshake): under the intro on the welcome screen, and in the top-right menu.
 const linkHTML = (l) => `<a href="${escapeHTML(l.url)}" target="_blank" rel="noopener noreferrer">${escapeHTML(l.label)}<span aria-hidden="true">↗</span></a>`;
@@ -38,20 +51,20 @@ categories.forEach((c, i) => {
   const label = document.createElement("button");
   label.className = "camp-label";
   label.dataset.camp = i;
-  label.setAttribute("aria-label", `Walk to ${escapeHTML(c.name)}`);
+  label.setAttribute("aria-label", t("walkTo", { name: c.name }));
   label.innerHTML = `<span>${c.number}</span>${escapeHTML(c.short)}<i></i>`;
   $("camp-labels").append(label);
   const nav = document.createElement("button");
   nav.dataset.camp = i;
   nav.innerHTML = `<span>${c.number}</span>${escapeHTML(c.name)}`;
-  nav.setAttribute("aria-label", `Go to ${escapeHTML(c.name)}`);
+  nav.setAttribute("aria-label", t("goTo", { name: c.name }));
   $("category-nav").append(nav);
   const dot = document.createElement("button");
   dot.className = "map-site";
   dot.dataset.camp = i;
   dot.style.left = `${50 + (c.arrival[0] / 28) * 100}%`;
   dot.style.top = `${50 + (c.arrival[1] / 28) * 100}%`;
-  dot.setAttribute("aria-label", `Map: ${escapeHTML(c.name)}`);
+  dot.setAttribute("aria-label", t("mapSite", { name: c.name }));
   $("map-sites").append(dot);
 });
 function toast(text) {
@@ -64,7 +77,7 @@ function begin() {
   started = true;
   document.body.classList.add("exploring");
   $("welcome").setAttribute("inert", "");
-  $("walk-status").textContent = "Click to walk · Drag to look around · Find the glowing spots";
+  $("walk-status").textContent = t("statusExplore");
 }
 function closeWork() {
   active = -1;
@@ -83,7 +96,7 @@ function openWork(i) {
   document.body.classList.add("panel-open");
   $("panel-number").textContent = c.number;
   $("panel-english").textContent = c.english;
-  $("panel-category").textContent = `FIELD NOTES / ${c.number}`;
+  $("panel-category").textContent = t("fieldNotes", { n: c.number });
   $("work-title").textContent = c.name;
   $("work-intro").textContent = c.intro;
   $("work-description").textContent = c.description;
@@ -95,7 +108,7 @@ function openWork(i) {
     b.classList.toggle("visited", visited.has(idx));
     b.classList.toggle("active", idx === i);
   });
-  $("walk-status").textContent = `Arrived · ${c.short}`;
+  $("walk-status").textContent = t("arrived", { name: c.short });
 }
 function navigate(i) {
   begin();
@@ -105,7 +118,7 @@ function navigate(i) {
     return;
   }
   island?.travelTo(i);
-  $("walk-status").textContent = `Walking to · ${categories[i].short}`;
+  $("walk-status").textContent = t("walkingTo", { name: categories[i].short });
 }
 document
   .querySelectorAll("[data-camp]")
@@ -118,7 +131,7 @@ $("continue").addEventListener("click", closeWork);
 $("overview").addEventListener("click", () => {
   closeWork();
   island?.overview();
-  $("walk-status").textContent = `Island overview · ${categories.length} places to explore`;
+  $("walk-status").textContent = t("overviewStatus", { n: categories.length });
 });
 $("home").addEventListener("click", () => {
   closeWork();
@@ -181,14 +194,14 @@ $("sound").addEventListener("click", async () => {
     $("sound").setAttribute("aria-pressed", String(enabled));
     $("sound").setAttribute(
       "aria-label",
-      enabled ? "Turn off ambient sound" : "Turn on ambient sound",
+      enabled ? t("soundOff") : t("soundOn"),
     );
     $("sound-waves").setAttribute(
       "d",
       enabled ? "M15 8c3 2 3 6 0 8m3-11c5 4 5 10 0 14" : "m16 9 5 6m0-6-5 6",
     );
   } catch {
-    toast("Ambient sound isn't available in this browser.");
+    toast(t("soundUnavailable"));
   }
 });
 document.addEventListener("visibilitychange", () => {
@@ -231,3 +244,13 @@ try {
   $("fallback").hidden = false;
   $("camp-labels").hidden = true;
 }
+// Coming back from a language switch: restore the theme and the open section.
+try {
+  const resume = JSON.parse(sessionStorage.getItem("portfolio-resume") || "null");
+  sessionStorage.removeItem("portfolio-resume");
+  if (resume) {
+    if (resume.theme && resume.theme !== "forest") document.querySelector(`.theme-picker button[data-theme="${resume.theme}"]`)?.click();
+    if (resume.active >= 0 && categories[resume.active]) openWork(resume.active);
+    else if (resume.started) begin();
+  }
+} catch {}

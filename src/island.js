@@ -1,4 +1,5 @@
 import * as T from "three";
+import { t } from "./i18n.js";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { mergeGeometries } from "three/addons/utils/BufferGeometryUtils.js";
 import { categories, themes } from "./content.js";
@@ -587,7 +588,7 @@ export function createIsland(
   function moveTo(destination) {
     const route = findRoute(playerPosition, destination, obstacles);
     if (!route.length) {
-      onBoundary?.("You can't walk there. Try the open ground nearby.");
+      onBoundary?.(t("cantWalk"));
       return false;
     }
     path = route;
@@ -653,7 +654,7 @@ export function createIsland(
     }
     const hit = raycaster.intersectObject(land)[0];
     if (hit) moveTo([hit.point.x, hit.point.z]);
-    else onBoundary?.("That's the sea. Stay on the island.");
+    else onBoundary?.(t("sea"));
   });
   canvas.addEventListener("pointercancel", () => {
     pointerDown = null;

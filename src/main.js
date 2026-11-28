@@ -29,10 +29,11 @@ if (profile.links.length) {
   $("contact-menu").insertAdjacentHTML("beforeend", profile.links.map(linkHTML).join(""));
   $("contact").hidden = false;
 }
-const setContact = (open) => { $("contact-menu").hidden = !open; $("contact").setAttribute("aria-expanded", String(open)); };
+const setContact = (open) => { $("contact-menu").hidden = !open; $("contact").setAttribute("aria-expanded", String(open)); document.body.classList.toggle("contact-open", open); };
 $("contact").addEventListener("click", (e) => { e.stopPropagation(); setContact($("contact-menu").hidden); });
 document.addEventListener("click", (e) => { if (!$("contact-menu").hidden && !e.target.closest(".contact-wrap")) setContact(false); });
-document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !$("contact-menu").hidden) { setContact(false); $("contact").focus(); } });
+// Esc closes just the menu first (capture phase), so it does not also close an open section panel.
+document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !$("contact-menu").hidden) { e.stopImmediatePropagation(); setContact(false); $("contact").focus(); } }, true);
 categories.forEach((c, i) => {
   const label = document.createElement("button");
   label.className = "camp-label";

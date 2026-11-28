@@ -1415,7 +1415,7 @@ body:not(.exploring) .walk-status {
   display: grid;
   gap: 10px;
   padding: 14px 18px 16px;
-  background: #fffdf6f2;
+  background: #fffdf6;
   border: 1px solid #fff;
   border-radius: 14px;
   box-shadow: 0 10px 30px #19372e1f;
@@ -1457,4 +1457,11 @@ body:not(.exploring) .walk-status {
   .welcome-instructions {
     display: none;
   }
+}
+/* While the profile menu is open, lift the top bar above the section panel so the menu is never covered. */
+body.contact-open .topbar {
+  z-index: 8;
+}
+.topbar .contact-menu {
+  pointer-events: auto;
 }
